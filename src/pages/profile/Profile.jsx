@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import "./profile.css";
 import UploadAvatar from "../../components/UploadAvatar";
-import Header from "../../components/header/Header";
 import Footer from "../../components/Footer";
 import useProfileStore from "../../stores/useProfileStore";
 import userProfile from "../../assets/img_profile.jpg";
 import Sidebar from "./Sidebar";
+import Header from "../../components/header/Header";
 
 const Profile = () => {
   const { user, setUser, updateUser, updateUserToApi } = useProfileStore();
