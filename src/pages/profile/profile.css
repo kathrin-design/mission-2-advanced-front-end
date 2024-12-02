@@ -1,0 +1,32 @@
+.user-profile {
+  width: 10%;
+}
+
+.input-label {
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  background-color: white;
+  color: var(--green);
+  font-size: 0.9rem;
+  padding: 0 4px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  color: black;
+  border-radius: 10px;
+  outline: none;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+.input-field:focus {
+  outline: 2px solid var(--green);
+}
+
+.cursor {
+  cursor: pointer;
+}

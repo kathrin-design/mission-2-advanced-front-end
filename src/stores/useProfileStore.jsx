@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import updateUser from "../services/api/apiClient";
 
 const useProfileStore = create((set) => ({
   user: {
@@ -9,11 +10,24 @@ const useProfileStore = create((set) => ({
     gender: "",
     phoneNumber: "",
   },
-  setUser: (newUser) => set({ user: { ...newUser } }),
+
+  setUser: async (newUser) => set({ user: { ...newUser } }),
+
   updateUser: (key, value) =>
     set((state) => ({
       user: { ...state.user, [key]: value },
     })),
+
+  updateUserToApi: async (userData) => {
+    try {
+      const updatedUser = await updateUser(userData.id, userData);
+      set({ user: updatedUser });
+      return updatedUser;
+    } catch (error) {
+      console.error("Error updating user:", error);
+      throw error;
+    }
+  },
 }));
 
 export default useProfileStore;

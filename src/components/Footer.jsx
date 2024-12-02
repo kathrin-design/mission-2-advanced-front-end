@@ -5,10 +5,12 @@ import facebookIcon from "../assets/facebook-icon.png";
 import instagramIcon from "../assets/instagram-icon.png";
 import twitterIcon from "../assets/twitter-icon.png";
 
-const Footer = () => {
+const Footer = ({ classFooter }) => {
   return (
-    <div className="w-100 d-flex flex-column mt-5 bg-white border-top">
-      <div className="d-flex flex-column flex-sm-row justify-content-between m-2 px-5">
+    <div
+      className={`w-100 pt-4 d-flex flex-column bg-white border-top align-items-end bottom-0 ${classFooter}`}
+    >
+      <div className="d-flex flex-column flex-sm-row justify-content-between w-100 px-4">
         <div className="d-flex flex-column w-50">
           <div>
             <img src={Logo} alt="Logo VideoBelajar" />

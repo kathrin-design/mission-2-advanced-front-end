@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import Header from "../components/Header/Header";
+import Header from "../components/header/Header";
 import Title from "../components/form-component/Title";
 import Subtitle from "../components/form-component/SubTitle";
 import BtnGoogle from "../components/form-component/BtnGoogle";
@@ -18,6 +18,7 @@ const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   const navigate = useNavigate();
+  
   const {
     userName,
     email,
@@ -90,7 +91,10 @@ const Login = () => {
             onKeyDown={handleEnterPress}
           >
             <div className="mb-2">
-              <label htmlFor="userName" className="text-secondary DM_Sans fs-6">
+              <label
+                htmlFor="userName"
+                className="text-secondary DM_Sans fs-6 pb-1"
+              >
                 Username
                 <span className="text-danger fs-6 ms-1">*</span>
               </label>
@@ -109,7 +113,10 @@ const Login = () => {
             </div>
 
             <div className="mb-2">
-              <label htmlFor="email" className="text-secondary DM_Sans fs-6">
+              <label
+                htmlFor="email"
+                className="text-secondary DM_Sans fs-6 pb-1"
+              >
                 E-mail
                 <span className="text-danger fs-6 ms-1">*</span>
               </label>
@@ -128,7 +135,10 @@ const Login = () => {
             </div>
 
             <div className="mb-3">
-              <label htmlFor="password" className="text-secondary DM_Sans fs-6">
+              <label
+                htmlFor="password"
+                className="text-secondary DM_Sans fs-6 pb-1"
+              >
                 Password
                 <span className="text-danger fs-6 ms-1">*</span>
               </label>
@@ -166,7 +176,7 @@ const Login = () => {
             <div className="d-grid mt-2">
               <button
                 type="submit"
-                className="btn-first btn border-0 p-2 rounded"
+                className="btn-first btn border-0 p-2 rounded fw-semibold"
               >
                 Masuk
               </button>
@@ -175,7 +185,7 @@ const Login = () => {
             <div className="d-grid mt-2">
               <button
                 type="button"
-                className="btn-second btn border-0 p-2 rounded"
+                className="btn-second btn border-0 p-2 rounded fw-semibold"
                 onClick={() => navigate("/register")}
               >
                 Daftar

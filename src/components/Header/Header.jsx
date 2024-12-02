@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Logo from "../../assets/Logo.png";
-import "./Header.css";
+import "./header.css";
 import loginStore from "../../stores/useLoginStore";
 
 const Header = () => {
@@ -9,23 +9,17 @@ const Header = () => {
   const { userName, isLoggedIn, logout } = loginStore();
 
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
-  const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
 
   const profileDropdownRef = useRef(null);
-  const categoryDropdownRef = useRef(null);
 
   const toggleProfileDropdown = () => {
     setIsProfileDropdownOpen((prev) => !prev);
   };
 
-  const toggleCategoryDropdown = () => {
-    setIsCategoryDropdownOpen((prev) => !prev);
-  };
-
   const handleLogout = () => {
     logout();
     setIsProfileDropdownOpen(false);
-    navigate("/login");
+    navigate("/");
   };
 
   const handleClickOutside = (e) => {
@@ -34,12 +28,6 @@ const Header = () => {
       !profileDropdownRef.current.contains(e.target)
     ) {
       setIsProfileDropdownOpen(false);
-    }
-    if (
-      categoryDropdownRef.current &&
-      !categoryDropdownRef.current.contains(e.target)
-    ) {
-      setIsCategoryDropdownOpen(false);
     }
   };
 
@@ -58,86 +46,13 @@ const Header = () => {
         </Link>
       </div>
 
-      <div className="nav-right d-flex flex-row justify-content-between align-items-center">
-        <div className="head justify-content-start ms-sm-2">
-          <ul className="navbar-nav me-auto mb-2 ms-sm-1 mb-lg-0 d-flex flex-row justify-content-center align-items-center align-self-center">
-            <li className="nav-item px-sm-2">
-              <Link
-                className="nav-link DM_Sans text-secondary fw-medium"
-                aria-current="page"
-                to="/"
-              >
-                Home
-              </Link>
-            </li>
-            <li className="nav-item mx-sm-2 px-sm-2">
-              <a className="nav-link DM_Sans text-secondary fw-medium" href="#">
-                About
-              </a>
-            </li>
-            <li
-              className="nav-item dropdown-btn position-relative px-sm-2"
-              onClick={toggleCategoryDropdown}
-              ref={categoryDropdownRef}
-            >
-              <a
-                href="#"
-                className="nav-link DM_Sans text-secondary fw-medium d-flex flex-row"
-              >
-                Category
-                <span className="ms-sm-1">
-                  <i className="fa-solid fa-chevron-down"></i>
-                </span>
-              </a>
-
-              {isCategoryDropdownOpen && (
-                <ul className="dropdown-list p-0">
-                  <li className="dropdown-list-item list-unstyled">
-                    <a
-                      className="text-decoration-none DM_Sans text-secondary fw-medium"
-                      href="#"
-                    >
-                      Design & Technology
-                    </a>
-                  </li>
-                  <li className="dropdown-list-item list-unstyled">
-                    <a
-                      className="text-decoration-none DM_Sans text-secondary fw-medium"
-                      href="#"
-                    >
-                      Marketing
-                    </a>
-                  </li>
-                  <li className="dropdown-list-item list-unstyled">
-                    <a
-                      className="text-decoration-none DM_Sans text-secondary fw-medium"
-                      href="#"
-                    >
-                      Business
-                    </a>
-                  </li>
-                  <li className="dropdown-list-item list-unstyled">
-                    <a
-                      className="text-decoration-none DM_Sans text-secondary fw-medium"
-                      href="#"
-                    >
-                      Design
-                    </a>
-                  </li>
-                  <hr className="m-0" />
-                  <li className="dropdown-list-item list-unstyled">
-                    <a
-                      className="text-decoration-none DM_Sans text-secondary fw-medium"
-                      href="#"
-                    >
-                      Consultation
-                    </a>
-                  </li>
-                </ul>
-              )}
-            </li>
-          </ul>
-        </div>
+      <div className="w-100 d-flex flex-row justify-content-end align-items-center">
+        <Link
+          to="/kategori"
+          className="text-secondary text-decoration-none w-100 d-flex justify-content-end pe-4"
+        >
+          Kategori
+        </Link>
 
         {isLoggedIn ? (
           <div
@@ -151,7 +66,7 @@ const Header = () => {
               <div className="profile-img position-relative">
                 <i className="fa-solid fa-circle"></i>
               </div>
-              <span className="DM_Sans fw-semibold fs-6">
+              <span className="fw-semibold fs-6">
                 {userName}
                 <i className="fa-solid fa-angle-down ms-2"></i>
               </span>
@@ -212,20 +127,20 @@ const Header = () => {
             )}
           </div>
         ) : (
-          <div className="header-right d-flex flex-row me-sm-2 ms-auto">
-            <button
-              type="button"
-              className="btn btn-second fw-medium me-1"
-              onClick={() => navigate("/register")}
-            >
-              Register
-            </button>
+          <div className="header-right d-flex flex-row me-sm-2 ms-auto gap-2">
             <button
               type="button"
               className="btn btn-first fw-medium"
               onClick={() => navigate("/login")}
             >
               Login
+            </button>
+            <button
+              type="button"
+              className="btn btn-second fw-medium me-1"
+              onClick={() => navigate("/register")}
+            >
+              Register
             </button>
           </div>
         )}

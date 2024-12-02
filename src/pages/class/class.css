@@ -1,0 +1,80 @@
+.tab-text {
+  color: #f64920;
+}
+
+.tab {
+  background-color: #f64920;
+  width: 50%;
+  height: 5px;
+}
+
+.search-input {
+  outline: none;
+}
+
+.search-input:focus {
+  outline: 2px solid var(--green);
+  border-radius: 5px;
+}
+
+.fa-magnifying-glass {
+  cursor: pointer;
+}
+
+.bg-order-selesai {
+  color: var(--green);
+  background-color: var(--green-light);
+}
+
+.img-class {
+  width: 11rem;
+  height: 11rem;
+  object-fit: cover;
+}
+
+.avatar {
+  width: 7%;
+}
+
+.bg-default {
+  background-color: var(--light);
+}
+
+.progress-bar {
+  background-color: #f64920;
+}
+
+.text-progress {
+  width: 26%;
+}
+
+.w-28 {
+  width: 28%;
+}
+
+.active .tab-text {
+  color: red;
+}
+
+.tab-indicator {
+  height: 3px;
+  background-color: red;
+  width: 50%;
+  border-radius: 5px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.tab-text {
+  transition: color 0.3s ease;
+}
+
+.text-secondary {
+  color: #6c757d;
+}
+
+.text-red {
+  color: red;
+}

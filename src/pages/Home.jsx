@@ -1,11 +1,11 @@
 import React from "react";
-import Header from "../components/Header/Header";
-import HeroCard from "../components/HeroCard";
-import CourseHeader from "../components/CourseHeader";
-import ClosingCard from "../components/ClosingCard";
+import Header from "../components/header/Header";
+import HeroCard from "../components/hero-card/HeroCard";
+import CourseHeader from "../components/course/CourseHeader";
+import ClosingCard from "../components/closing-card/ClosingCard";
 import Footer from "../components/Footer";
 import "../index.css";
-import CourseWrapper from "../components/CourseWrapper";
+import CourseWrapper from "../components/course/CourseWrapper";
 
 const Home = () => {
   return (

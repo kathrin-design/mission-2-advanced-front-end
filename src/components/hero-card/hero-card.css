@@ -1,0 +1,15 @@
+.hero {
+  max-width: 100%;
+  background-image: linear-gradient(
+      180deg,
+      var(--black-light) 0%,
+      var(--black-light-2) 0%
+    ),
+    url(/src/assets/card-1.png);
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-btn {
+  background-color: var(--green);
+}

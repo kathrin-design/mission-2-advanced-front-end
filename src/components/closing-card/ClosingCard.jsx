@@ -1,4 +1,5 @@
 import React from "react";
+import './closing-card.css'
 
 const ClosingCard = () => {
   return (

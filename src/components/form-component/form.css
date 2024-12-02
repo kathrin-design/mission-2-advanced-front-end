@@ -1,0 +1,30 @@
+.form_container {
+  width: 40%;
+}
+
+.btn-first,
+.btn-first:hover,
+.btn-first:active {
+  color: var(--white);
+  background-color: var(--green);
+  border: none;
+}
+
+.btn-second,
+.btn-second:hover,
+.btn-second:active {
+  color: var(--green);
+  background-color: var(--white);
+  border: 1px solid var(--green);
+}
+
+.btn-google,
+.btn-google:hover,
+.btn-google:active {
+  background-color: var(--google);
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+  border: none;
+}

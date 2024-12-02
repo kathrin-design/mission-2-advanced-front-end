@@ -1,0 +1,36 @@
+.rectangle {
+  width: 52px;
+  height: 6px;
+  border-radius: 10px;
+  background-color: var(--red);
+}
+
+.tutor-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.course-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.course {
+  width: 100%;
+  max-width: 300px;
+  margin: auto;
+}
+
+.price {
+  font-family: "Poppins", sans-serif;
+  color: var(--price);
+  font-size: 1rem;
+}
+
+@media (max-width: 576px) {
+  .course-wrapper {
+    grid-template-columns: 1fr;
+  }
+}

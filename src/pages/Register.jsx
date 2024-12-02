@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import registerStore from "../stores/useRegisterStore";
-import Header from "../components/Header/Header";
+import useRegisterStore from "../stores/useRegisterStore";
+import Header from "../components/header/Header";
 import Title from "../components/form-component/Title";
 import Subtitle from "../components/form-component/SubTitle";
 import BtnGoogle from "../components/form-component/BtnGoogle";
 import "../index.css";
 import EyeOff from "../assets/mdi_eye-off.png";
 import IdnFlag from "../assets/idn-flag.png";
-import ArrowDown from "../assets/arrow-down.png";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
@@ -28,9 +27,10 @@ const Register = () => {
     setPhoneNumber,
     setPassword,
     saveToLocalStorage,
-  } = registerStore();
+    saveToAPI,
+  } = useRegisterStore();
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
 
     if (!userName || !email || !password || !confirmPassword) {
@@ -43,9 +43,14 @@ const Register = () => {
       return;
     }
 
-    saveToLocalStorage();
-    toast.success("Registrasi berhasil");
-    window.location.href = "/login";
+    try {
+      saveToLocalStorage();
+      await saveToAPI();
+      toast.success("Registrasi berhasil");
+      navigate("/login");
+    } catch (error) {
+      toast.error("Registrasi gagal. Coba lagi nanti.");
+    }
   };
 
   const togglePasswordVisibility = () => {
@@ -132,9 +137,9 @@ const Register = () => {
                   <div className="border-end p-2 bg-body-secondary rounded-start d-flex align-items-center">
                     <img src={IdnFlag} alt="IDN Flag" />
                   </div>
-                  <div className="p-2 d-flex flex-row">
-                    <div className="me-1 text-secondary fw-semibold">+62</div>
-                    <img className="h-50" src={ArrowDown} alt="Arrow Down" />
+                  <div className="p-2 d-flex flex-row align-items-center gap-2">
+                    <div className="text-secondary fw-semibold">+62</div>
+                    <i className="fa-solid fa-chevron-down text-secondary"></i>
                   </div>
                 </div>
                 <input
