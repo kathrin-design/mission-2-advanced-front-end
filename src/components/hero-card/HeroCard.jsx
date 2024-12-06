@@ -3,7 +3,7 @@ import "./hero-card.css";
 
 const HeroCard = () => {
   return (
-    <div className="d-flex flex-column justify-content-center align-items-center">
+    <div className="d-flex w-100 flex-column justify-content-center align-items-center">
       <div className="hero py-5 rounded-3 border-0 d-flex flex-column justify-content-center align-items-center">
         <div className="w-75 text-center d-flex flex-column justify-content-center align-items-center">
           <h1 className="poppins fs-1 fw-bold text-white">

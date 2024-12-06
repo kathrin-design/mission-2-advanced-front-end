@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./profile.css";
 import UploadAvatar from "../../components/UploadAvatar";
-import Footer from "../../components/Footer";
+import Footer from "../../components/footer/Footer";
 import useProfileStore from "../../stores/useProfileStore";
 import userProfile from "../../assets/img_profile.jpg";
 import Sidebar from "./Sidebar";
@@ -136,7 +136,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      <Footer classFooter="position-absolute" />
+      <Footer classFooter="position-absolute bottom-0" />
     </>
   );
 };

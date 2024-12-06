@@ -1,17 +1,27 @@
 import React from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import PaymentHeader from "../components/header/PaymentHeader";
-import end from "../assets/end.png";
-import { useNavigate } from "react-router-dom";
+import paymentSuccessful from "../assets/payment-successful.png";
 
-const EndPayment = () => {
+const PaymentSuccessful = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { course } = location.state || {};
+
+  const handleToOrderPage = () => {
+    navigate("/order", { state: { course } });
+  };
 
   return (
     <>
       <PaymentHeader />
       <div className="container py-4 d-flex justify-content-center">
         <div className="col-12 col-lg-4 border rounded-2 d-flex flex-column p-5 bg-white">
-          <img src={end} alt="selesai" className="img-fluid mx-auto mb-3" />
+          <img
+            src={paymentSuccessful}
+            alt="selesai"
+            className="img-fluid mx-auto mb-3"
+          />
           <p className="text-black fs-5 fw-semibold text-center">
             Pembayaran Berhasil!
           </p>
@@ -21,7 +31,7 @@ const EndPayment = () => {
           </p>
           <button
             className="btn-first fw-medium fs-6 mt-3 mx-auto p-2 px-4 rounded-3"
-            onClick={() => navigate("/order")}
+            onClick={handleToOrderPage}
           >
             Lihat Detail Pesanan
           </button>
@@ -31,4 +41,4 @@ const EndPayment = () => {
   );
 };
 
-export default EndPayment;
+export default PaymentSuccessful;

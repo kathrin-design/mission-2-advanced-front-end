@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Header from "../../components/header/Header";
-import Footer from "../../components/Footer";
+import Footer from "../../components/footer/Footer";
 import Sidebar from "../profile/Sidebar";
 import ClassList from "./ClassList";
 import "./class.css";
@@ -165,16 +165,19 @@ const Class = () => {
                       button={
                         order.status === "Selesai" ? (
                           <div className="d-flex flex-column flex-sm-row gap-2 w-100 w-md-auto mt-3 mt-md-0">
-                            <button className="btn-second p-2 px-4 rounded-3 fw-semibold w-100 w-sm-auto">
+                            <button className="btn-second p-2 rounded-3 fw-semibold w-100 w-sm-auto">
                               Unduh Sertifikat
                             </button>
-                            <button className="btn-first p-2 px-4 rounded-3 fw-semibold w-100 w-sm-auto">
+                            <button className="btn-first p-2 rounded-3 fw-semibold w-100 w-sm-auto">
                               Lihat Detail Kelas
                             </button>
                           </div>
                         ) : (
                           <div className="d-flex flex-column flex-sm-row gap-2 w-75 w-md-auto mt-3 mt-md-0">
-                            <button className="btn-first p-2 px-2 rounded-3 fw-semibold w-100 w-sm-auto" onClick={() => navigate("video")}>
+                            <button
+                              className="btn-first p-2 px-2 rounded-3 fw-semibold w-100 w-sm-auto"
+                              onClick={() => navigate("video")}
+                            >
                               Lanjutkan Pembelajaran
                             </button>
                           </div>

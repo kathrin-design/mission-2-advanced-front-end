@@ -39,14 +39,14 @@ const Header = () => {
   }, []);
 
   return (
-    <nav className="navbar navbar-expand sticky-top bg-body-tertiary top-0 start-0 w-100 border-bottom d-flex align-items-center">
-      <div className="logo">
+    <nav className="navbar sticky-top w-100 top-0 left-0 z-1  bg-body-tertiary border-bottom d-flex align-items-center justify-content-between">
+      <div>
         <Link to="/">
           <img src={Logo} alt="logo" />
         </Link>
       </div>
 
-      <div className="w-100 d-flex flex-row justify-content-end align-items-center">
+      <div className="d-flex flex-row justify-content-end align-items-center">
         <Link
           to="/kategori"
           className="text-secondary text-decoration-none w-100 d-flex justify-content-end pe-4"

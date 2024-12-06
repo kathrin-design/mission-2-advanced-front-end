@@ -1,14 +1,53 @@
-import React from "react";
-import "./buy.css";
+import React, { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import "./payment.css";
 import PaymentHeader from "../../components/header/PaymentHeader";
 import CourseDetail from "../product-detail/CourseDetail";
-import logoBCA from "../../assets/logo-bca.png";
-import { useNavigate } from "react-router-dom";
 import OrderSummary from "../payment-methods/OrderSummary";
 import PaymentMethods from "../payment-methods/Methods";
+import logoBCA from "../../assets/logo-bca.png";
 
-const Bayar = () => {
+const Payment = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { course } = location.state || {};
+
+  if (!course) {
+    return <div>No course data available</div>;
+  }
+
+  const handleProceedToPayment = () => {
+    navigate("ubah-metode", { state: { course } });
+  };
+
+  const handleToOrderPage = () => {
+    navigate("selesai", { state: { course } });
+  };
+
+  const [copied, setCopied] = useState(false);
+  const textToCopy = "11739 081234567890";
+
+  const handleCopy = () => {
+    const textToCopy = "11739 081234567890";
+    navigator.clipboard
+      .writeText(textToCopy)
+      .then(() => {
+        setCopied(true);
+        setTimeout(() => {
+          setCopied(false);
+        }, 2000);
+      })
+      .catch((error) => {
+        console.error("Failed to copy text: ", error);
+      });
+  };
+
+  const btnBuyCourse = document.querySelectorAll(".btn-buy-course");
+  btnBuyCourse.forEach((button) => {
+    button.addEventListener("click", () => {
+      console.log(button.course);
+    });
+  });
 
   return (
     <>
@@ -27,23 +66,30 @@ const Bayar = () => {
               </p>
               <div className="d-flex flex-row gap-3">
                 <p className="text-secondary fs-6 fw-semibold m-0">
-                  11739 081234567890
+                  {textToCopy}
                 </p>
-                <p className="text-danger fs-6 fw-medium m-0">Salin</p>
+                <p
+                  className="text-danger fs-6 fw-medium m-0 cursor"
+                  onClick={handleCopy}
+                >
+                  {copied ? "Tersalin!" : "Salin"}
+                </p>
               </div>
             </div>
+
             <OrderSummary
+              course={course}
               button={
                 <div className="d-flex flex-row justify-content-between gap-4">
                   <button
                     className="btn-second w-100 p-2 rounded-3 fw-semibold"
-                    onClick={() => navigate("ubah-metode")}
+                    onClick={handleProceedToPayment}
                   >
                     Ganti Metode Pembayaran
                   </button>
                   <button
-                    className="btn-first w-100 p-2 rounded-3 fw-semibold"
-                    onClick={() => navigate("selesai")}
+                    className="btn-first w-100 p-2 rounded-3 fw-semibold btn-buy-course"
+                    onClick={handleToOrderPage}
                   >
                     Bayar Sekarang
                   </button>
@@ -59,4 +105,4 @@ const Bayar = () => {
   );
 };
 
-export default Bayar;
+export default Payment;

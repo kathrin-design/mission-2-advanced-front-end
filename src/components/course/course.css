@@ -1,8 +1,5 @@
-.rectangle {
-  width: 52px;
-  height: 6px;
-  border-radius: 10px;
-  background-color: var(--red);
+.tab-indicator {
+  border-radius: 5%;
 }
 
 .tutor-avatar {
@@ -11,16 +8,20 @@
   border-radius: 10px;
 }
 
-.course-wrapper {
+.course-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .course {
   width: 100%;
-  max-width: 300px;
+  max-width: 350px;
   margin: auto;
+}
+
+.course-description {
+  height: 4.5rem;
 }
 
 .price {

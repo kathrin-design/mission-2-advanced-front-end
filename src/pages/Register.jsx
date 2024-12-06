@@ -6,7 +6,6 @@ import Title from "../components/form-component/Title";
 import Subtitle from "../components/form-component/SubTitle";
 import BtnGoogle from "../components/form-component/BtnGoogle";
 import "../index.css";
-import EyeOff from "../assets/mdi_eye-off.png";
 import IdnFlag from "../assets/idn-flag.png";
 import { useNavigate } from "react-router-dom";
 
@@ -168,12 +167,16 @@ const Register = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <img
-                  src={EyeOff}
+                <div
                   className="passwordVisibleIcon d-flex justify-content-center align-items-center align-self-center me-2 h-50 cursor-pointer"
                   onClick={togglePasswordVisibility}
-                  alt="Password Visibility Toggle"
-                />
+                >
+                  {passwordVisible ? (
+                    <i className="fa-solid fa-eye"></i>
+                  ) : (
+                    <i className="fa-solid fa-eye-slash"></i>
+                  )}
+                </div>
               </div>
             </div>
 
@@ -195,19 +198,23 @@ const Register = () => {
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />
-                <img
-                  src={EyeOff}
+                <div
                   className="passwordVisibleIcon d-flex justify-content-center align-items-center align-self-center me-2 h-50 cursor-pointer"
                   onClick={togglePasswordVisibility}
-                  alt="Password Visibility Toggle"
-                />
+                >
+                  {passwordVisible ? (
+                    <i className="fa-solid fa-eye"></i>
+                  ) : (
+                    <i className="fa-solid fa-eye-slash"></i>
+                  )}
+                </div>
               </div>
             </div>
 
             <div className="d-grid mt-2">
               <button
                 type="submit"
-                className="btn-first btn border-0 p-2 rounded"
+                className="btn-first btn p-2 rounded fw-semibold"
               >
                 Daftar
               </button>
@@ -216,7 +223,7 @@ const Register = () => {
             <div className="d-grid mt-2">
               <button
                 type="button"
-                className="btn-second btn border-0 p-2 rounded"
+                className="btn-second btn p-2 rounded fw-semibold"
                 onClick={() => navigate("/login")}
               >
                 Masuk

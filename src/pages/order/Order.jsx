@@ -1,11 +1,15 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import Header from "../../components/header/Header";
 import Sidebar from "../profile/Sidebar";
-import Footer from "../../components/Footer";
+import Footer from "../../components/footer/Footer";
 import "./order.css";
 import OrderList from "./OrderList";
 
 const Order = () => {
+  const location = useLocation();
+  const { course } = location.state || {};
+
   const [activeTab, setActiveTab] = useState("semua");
 
   const handleTabClick = (tab) => {
@@ -198,7 +202,7 @@ const Order = () => {
                 filteredOrders.map((order) => (
                   <div key={order.id}>
                     <OrderList
-                      invoice={order.invoice}
+                      course={course}
                       status={
                         <p
                           className={`fs-6 fw-medium p-1 px-3 rounded-3 my-auto ${

@@ -1,12 +1,18 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import PaymentHeader from "../components/header/PaymentHeader";
 import OrderSummary from "./payment-methods/OrderSummary";
 import CourseDetail from "./product-detail/CourseDetail";
 import PaymentMethods from "./payment-methods/Methods";
 
-const UbahMetode = () => {
+const ChangePaymentMethod = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { course } = location.state || {};
+
+  if (!course) {
+    return <div>No course data available</div>;
+  }
 
   return (
     <>
@@ -14,7 +20,7 @@ const UbahMetode = () => {
       <div className="container py-4">
         <div className="row g-5">
           <div className="col-12 col-lg-7">
-            <OrderSummary />
+            <OrderSummary course={course} />
             <PaymentMethods
               title="Ubah Metode Pembayaran"
               className="mt-4"
@@ -28,11 +34,11 @@ const UbahMetode = () => {
               }
             />
           </div>
-          <CourseDetail className="col-lg-5" />
+          <CourseDetail course={course} className="col-lg-5" />
         </div>
       </div>
     </>
   );
 };
 
-export default UbahMetode;
+export default ChangePaymentMethod;

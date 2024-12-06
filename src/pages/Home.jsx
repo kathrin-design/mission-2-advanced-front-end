@@ -1,20 +1,18 @@
 import React from "react";
 import Header from "../components/header/Header";
 import HeroCard from "../components/hero-card/HeroCard";
-import CourseHeader from "../components/course/CourseHeader";
 import ClosingCard from "../components/closing-card/ClosingCard";
-import Footer from "../components/Footer";
+import Footer from "../components/footer/Footer";
 import "../index.css";
-import CourseWrapper from "../components/course/CourseWrapper";
+import Courses from "../components/course/Courses";
 
 const Home = () => {
   return (
     <>
       <Header />
-      <main>
+      <main className="w-100 d-flex flex-column">
         <HeroCard />
-        <CourseHeader />
-        <CourseWrapper />
+        <Courses />
         <ClosingCard />
       </main>
       <Footer />

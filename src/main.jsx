@@ -8,12 +8,12 @@ import Profile from "./pages/profile/Profile.jsx";
 import AllProducts from "./pages/all-product/AllProducts.jsx";
 import ProductDetail from "./pages/product-detail/ProductDetail.jsx";
 import PaymentMethods from "./pages/payment-methods/PaymentMethods.jsx";
-import Bayar from "./pages/buy/Buy.jsx";
-import UbahMetode from "./pages/UbahMetode.jsx";
-import Video from "./pages/Video.jsx";
+import Payment from "./pages/Payment/Payment.jsx";
+import ChangePaymentMethod from "./pages/ChangePaymentMethod.jsx";
+import Video from "./pages/video/Video.jsx";
 import Class from "./pages/class/Class.jsx";
 import Order from "./pages/order/Order.jsx";
-import EndPayment from "./pages/EndPayment.jsx";
+import PaymentSuccessful from "./pages/PaymentSuccessful.jsx";
 
 const router = createBrowserRouter([
   {
@@ -71,22 +71,22 @@ const router = createBrowserRouter([
                 children: [
                   {
                     index: true,
-                    element: <Bayar />,
+                    element: <Payment />,
                   },
                   {
                     path: "selesai",
-                    element: <EndPayment />,
+                    element: <PaymentSuccessful />,
                   },
                   {
                     path: "ubah-metode",
                     children: [
                       {
                         index: true,
-                        element: <UbahMetode />,
+                        element: <ChangePaymentMethod />,
                       },
                       {
                         path: "selesai",
-                        element: <EndPayment />,
+                        element: <PaymentSuccessful />,
                       },
                     ],
                   },

@@ -1,16 +1,32 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import loginStore from "../../stores/useLoginStore";
 import "./product-detail.css";
 import Header from "../../components/header/Header";
-import Footer from "../../components/Footer";
+import Footer from "../../components/footer/Footer";
 import IntroductionToHR from "./IntroductionToHR";
 import TutorAndRating from "./TutorAndRating";
 import CourseDetail from "./CourseDetail";
-import loginStore from "../../stores/useLoginStore";
 
 const ProductDetail = () => {
   const navigate = useNavigate();
   const { isLoggedIn } = loginStore();
+
+  const location = useLocation();
+  const { course } = location.state || {};
+
+  if (!course) {
+    return <div>No course data available</div>;
+  }
+
+  const handleProceedToPayment = () => {
+    navigate("metode-pembayaran", { state: { course } })
+  }
+
+  function capitalizeFirstCharacter(str) {
+    if (!str) return "";
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
 
   return (
     <>
@@ -27,15 +43,14 @@ const ProductDetail = () => {
                 </li>
                 <li className="breadcrumb-item">
                   <a href="#" className="text-decoration-none text-secondary">
-                    Desain
+                    {capitalizeFirstCharacter(course.field)}
                   </a>
                 </li>
                 <li
                   className="breadcrumb-item active text-black"
                   aria-current="page"
                 >
-                  Gapai Karier Impianmu sebagai Seorang UI/UX Designer & Product
-                  Manager.
+                  {course.name}
                 </li>
               </ol>
             </nav>
@@ -47,11 +62,10 @@ const ProductDetail = () => {
             <div className="hero d-flex flex-column border border-dark p-4 rounded-3">
               <div className="px-sm-4 pb-2">
                 <p className="poppins fs-4 fw-normal text-white text-start">
-                  Gapai Karier Impianmu sebagai Seorang UI/UX Designer & Product
-                  Manager.
+                  Gapai Karier Impianmu sebagai Seorang UI/UX Designer & Product Manager.
                 </p>
                 <p className="DM_Sans fw-medium fs-6 text-white text-start m-0">
-                  Belajar bersama tutor profesional di Video Course.
+                  Belajar bersama tutor profesional di Video Belajar.
                 </p>
                 <p className="DM_Sans fw-medium fs-6 text-white text-start m-0">
                   Kapanpun, di manapun.
@@ -76,7 +90,7 @@ const ProductDetail = () => {
             <div className="border rounded-3 bg-white p-3">
               <p className="text-black fs-5 fw-semibold">Deskripsi</p>
               <p className="text-secondary">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. ...
+                {course.description}
               </p>
             </div>
             <TutorAndRating
@@ -103,28 +117,26 @@ const ProductDetail = () => {
             />
           </div>
 
-          <CourseDetail className="col-lg-4"
-            button={
-              <div className="d-flex flex-column gap-2 mt-3">
-                {isLoggedIn ? (
-                  <button
-                    className="btn btn-first"
-                    onClick={() => navigate("/login")}
-                  >
-                    Beli Sekarang
-                  </button>
-                ) : (
-                  <button
-                    className="btn btn-first"
-                    onClick={() => navigate("metode-pembayaran")}
-                  >
-                    Beli Sekarang
-                  </button>
-                )}
-                <button className="btn btn-second">Bagikan Kelas</button>
-              </div>
-            }
-          />
+          <CourseDetail className="col-lg-4" button={(
+            <div className="d-flex flex-column gap-2 mt-3">
+            {isLoggedIn ? (
+              <button
+                className="btn btn-first"
+                onClick={handleProceedToPayment}
+              >
+                Beli Sekarang
+              </button>
+            ) : (
+              <button
+                className="btn btn-first"
+                onClick={() => navigate("/login")}
+              >
+                Beli Sekarang
+              </button>
+            )}
+            <button className="btn btn-second">Bagikan Kelas</button>
+          </div>
+          )} />
         </div>
       </div>
 

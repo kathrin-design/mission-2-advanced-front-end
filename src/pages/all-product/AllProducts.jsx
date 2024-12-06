@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../../components/header/Header";
-import Footer from "../../components/Footer";
-import CourseWrapper from "../../components/course/CourseWrapper";
+import Footer from "../../components/footer/Footer";
+import Courses from "../../components/course/Courses";
 import FilterCategory from "../../components/FilterCategory";
 import "./all-products.css";
 
@@ -12,8 +12,8 @@ const SemuaProduk = () => {
       title: "Bidang Studi",
       options: [
         "Pemasaran",
+        "Desain",
         "Digital & Teknologi",
-        "Pengembangan Diri",
         "Bisnis Manajemen",
       ],
     },
@@ -119,7 +119,7 @@ const SemuaProduk = () => {
                   <i className="fa-solid fa-magnifying-glass p-2 text-secondary"></i>
                 </div>
               </div>
-              <CourseWrapper />
+              <Courses />
             </div>
           </div>
         </div>
