@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import PaymentHeader from "../components/header/PaymentHeader";
 import paymentSuccessful from "../assets/payment-successful.png";
+import order from "../data/order";
 
 const PaymentSuccessful = () => {
   const navigate = useNavigate();
@@ -10,6 +11,33 @@ const PaymentSuccessful = () => {
 
   const handleToOrderPage = () => {
     navigate("/order", { state: { course } });
+    const courseId = course.id;
+
+    let matchingItem;
+
+    order.forEach((item) => {
+      if (courseId === item.courseId) {
+        matchingItem = item;
+      }
+    });
+
+    if (matchingItem) {
+      matchingItem.quantity += 1;
+    } else {
+      order.push({
+        courseId: courseId,
+        quantity: 1,
+      });
+    }
+
+    let orderQuantity = 0;
+
+    order.forEach((item) => {
+      orderQuantity += item.quantity;
+    })
+
+    console.log(orderQuantity)
+    console.log(order);
   };
 
   return (

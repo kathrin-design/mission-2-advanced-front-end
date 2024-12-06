@@ -54,7 +54,10 @@ const OrderList = ({ status, course }) => {
         </div>
       </div>
       <div className="bg-default p-3 d-flex flex-row border-top justify-content-between align-items-center">
-        <p className="text-secondary fs-6 fw-medium m-0">Total Pembayaran</p>
+        <p className="text-secondary fs-6 fw-medium m-0">
+          Total Pembayaran{" "}
+          <span className="text-secondary fw-normal">(+biaya admin)</span>
+        </p>
         <div className="d-flex px-4 flex-column gap-1 justify-content-start">
           <p className="green fw-semibold fs-5 m-0 ps-4 w-100">
             Rp {formatCurrency(course.price + adminFee)}
