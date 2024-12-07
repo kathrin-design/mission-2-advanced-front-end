@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./course.css";
 import FullStar from "../../assets/full-star.png";
 import HalfStar from "../../assets/half-star.png";
@@ -7,8 +7,6 @@ import BlankStar from "../../assets/blank-star.png";
 import courses from "../../data/courses";
 
 const Courses = () => {
-  const navigate = useNavigate();
-
   const [activeTab, setActiveTab] = useState("semua");
 
   const handleTabClick = (tab) => {
@@ -129,15 +127,10 @@ const Courses = () => {
             key={index}
             to="/detail-produk"
             state={{ course }}
-            className="p-3 d-flex flex-column bg-white border rounded-3 text-decoration-none course"
+            className="p-3 d-flex flex-column bg-white border rounded-3 text-decoration-none course m-auto"
             data-course-name={course.name}
           >
-            <img
-              className="rounded-3"
-              src={course.image}
-              alt="Course"
-              onClick={() => navigate("/video")}
-            />
+            <img className="rounded-3" src={course.image} alt="Course" />
 
             <div className="d-flex flex-column mt-3">
               <p className="poppins text-black fs-6 fw-bold text-truncate">

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import Introduction from "./Introduction";
-import "./product-detail.css";
+import CourseContent from "./CourseContent";
 
-const IntroductionToHR = () => {
+const CourseContentToggler = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpand = () => setIsExpanded((prevState) => !prevState);
@@ -10,9 +9,8 @@ const IntroductionToHR = () => {
   return (
     <>
       <div
-        className="d-flex flex-row justify-content-between pt-3"
-        onClick={toggleExpand} // Add onClick to toggle the state
-        style={{ cursor: "pointer" }} // Optional: make the cursor a pointer
+        className="d-flex flex-row justify-content-between pt-3 cursor"
+        onClick={toggleExpand}
       >
         <div className="green fw-semibold">Introduction to HR</div>
         <i
@@ -24,13 +22,13 @@ const IntroductionToHR = () => {
 
       {isExpanded && (
         <div className="d-flex flex-column gap-2">
-          <Introduction />
-          <Introduction />
-          <Introduction />
+          <CourseContent />
+          <CourseContent />
+          <CourseContent />
         </div>
       )}
     </>
   );
 };
 
-export default IntroductionToHR;
+export default CourseContentToggler;

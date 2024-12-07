@@ -1,6 +1,6 @@
 import React from "react";
 
-const OrderSummary = ({ course, button }) => {
+const OrderSummary = ({ course, button, className }) => {
   if (!course) {
     return <div>No course data available</div>;
   }
@@ -13,7 +13,7 @@ const OrderSummary = ({ course, button }) => {
 
   return (
     <div className="col-12 mt-4">
-      <div className="border rounded-2 bg-white p-4 d-flex flex-column gap-3">
+      <div className={`${className} bg-white d-flex flex-column gap-3`}>
         <p className="text-black fs-5 fw-semibold m-0">Ringkasan Pesanan</p>
         <div className="d-flex justify-content-between">
           <p className="text-secondary fs-6 fw-medium m-0 w-75">

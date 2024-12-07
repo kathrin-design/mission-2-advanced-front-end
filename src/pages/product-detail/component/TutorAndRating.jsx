@@ -1,6 +1,6 @@
 import React from "react";
-import Avatar1 from "../../assets/img_avatar_8.jpg";
-import Avatar2 from "../../assets/img_avatar_9.jpg";
+import Avatar1 from "../../../assets/img_avatar_8.jpg";
+import Avatar2 from "../../../assets/img_avatar_9.jpg";
 
 const TutorAndRating = ({ title, as1, at1, as2, at2 }) => {
   return (
@@ -20,7 +20,7 @@ const TutorAndRating = ({ title, as1, at1, as2, at2 }) => {
               </p>
             </span>
           </div>
-          <p className="text-black">
+          <p className="text-black fs-6">
             Berkarier di bidang HR selama lebih dari 3 tahun. Saat ini bekerja
             sebagai Senior Talent Acquisition Specialist di Wings Group
             Indonesia (Sayap Mas Utama) selama hampir 1 tahun.
@@ -39,7 +39,7 @@ const TutorAndRating = ({ title, as1, at1, as2, at2 }) => {
               </p>
             </span>
           </div>
-          <p className="text-black">
+          <p className="text-black m-0">
             Berkarier di bidang HR selama lebih dari 3 tahun. Saat ini bekerja
             sebagai Senior Talent Acquisition Specialist di Wings Group
             Indonesia (Sayap Mas Utama) selama hampir 1 tahun.

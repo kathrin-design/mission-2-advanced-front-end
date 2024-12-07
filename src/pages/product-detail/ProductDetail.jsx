@@ -4,9 +4,9 @@ import loginStore from "../../stores/useLoginStore";
 import "./product-detail.css";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
-import IntroductionToHR from "./IntroductionToHR";
-import TutorAndRating from "./TutorAndRating";
-import CourseDetail from "./CourseDetail";
+import CourseContentToggler from "./component/CourseContentToggler";
+import TutorAndRating from "./component/TutorAndRating";
+import CourseSummary from "../../components/course/CourseSummary";
 
 const ProductDetail = () => {
   const navigate = useNavigate();
@@ -20,8 +20,8 @@ const ProductDetail = () => {
   }
 
   const handleProceedToPayment = () => {
-    navigate("metode-pembayaran", { state: { course } })
-  }
+    navigate("metode-pembayaran", { state: { course } });
+  };
 
   function capitalizeFirstCharacter(str) {
     if (!str) return "";
@@ -62,7 +62,8 @@ const ProductDetail = () => {
             <div className="hero d-flex flex-column border border-dark p-4 rounded-3">
               <div className="px-sm-4 pb-2">
                 <p className="poppins fs-4 fw-normal text-white text-start">
-                  Gapai Karier Impianmu sebagai Seorang UI/UX Designer & Product Manager.
+                  Gapai Karier Impianmu sebagai Seorang UI/UX Designer & Product
+                  Manager.
                 </p>
                 <p className="DM_Sans fw-medium fs-6 text-white text-start m-0">
                   Belajar bersama tutor profesional di Video Belajar.
@@ -89,9 +90,7 @@ const ProductDetail = () => {
           <div className="col-lg-8 d-flex flex-column gap-3">
             <div className="border rounded-3 bg-white p-3">
               <p className="text-black fs-5 fw-semibold">Deskripsi</p>
-              <p className="text-secondary">
-                {course.description}
-              </p>
+              <p className="text-secondary">{course.description}</p>
             </div>
             <TutorAndRating
               title="Belajar bersama Tutor Profesional"
@@ -104,9 +103,9 @@ const ProductDetail = () => {
               <p className="text-black fs-5 fw-semibold m-0">
                 Kamu akan Mempelajari
               </p>
-              <IntroductionToHR />
-              <IntroductionToHR />
-              <IntroductionToHR />
+              <CourseContentToggler />
+              <CourseContentToggler />
+              <CourseContentToggler />
             </div>
             <TutorAndRating
               title="Rating dan Review"
@@ -117,26 +116,29 @@ const ProductDetail = () => {
             />
           </div>
 
-          <CourseDetail className="col-lg-4" button={(
-            <div className="d-flex flex-column gap-2 mt-3">
-            {isLoggedIn ? (
-              <button
-                className="btn btn-first"
-                onClick={handleProceedToPayment}
-              >
-                Beli Sekarang
-              </button>
-            ) : (
-              <button
-                className="btn btn-first"
-                onClick={() => navigate("/login")}
-              >
-                Beli Sekarang
-              </button>
-            )}
-            <button className="btn btn-second">Bagikan Kelas</button>
-          </div>
-          )} />
+          <CourseSummary
+            className="col-lg-4"
+            button={
+              <div className="d-flex flex-column gap-2 mt-3">
+                {isLoggedIn ? (
+                  <button
+                    className="btn btn-first"
+                    onClick={handleProceedToPayment}
+                  >
+                    Beli Sekarang
+                  </button>
+                ) : (
+                  <button
+                    className="btn btn-first"
+                    onClick={() => navigate("/login")}
+                  >
+                    Beli Sekarang
+                  </button>
+                )}
+                <button className="btn btn-second">Bagikan Kelas</button>
+              </div>
+            }
+          />
         </div>
       </div>
 

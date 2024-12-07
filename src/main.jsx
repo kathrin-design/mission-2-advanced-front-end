@@ -8,7 +8,7 @@ import Profile from "./pages/profile/Profile.jsx";
 import AllProducts from "./pages/all-product/AllProducts.jsx";
 import ProductDetail from "./pages/product-detail/ProductDetail.jsx";
 import PaymentMethods from "./pages/payment-methods/PaymentMethods.jsx";
-import Payment from "./pages/Payment/Payment.jsx";
+import Payment from "./pages/payment/Payment.jsx";
 import ChangePaymentMethod from "./pages/ChangePaymentMethod.jsx";
 import Video from "./pages/video/Video.jsx";
 import Class from "./pages/class/Class.jsx";
@@ -67,7 +67,7 @@ const router = createBrowserRouter([
                 element: <PaymentMethods />,
               },
               {
-                path: "bayar",
+                path: "pembayaran",
                 children: [
                   {
                     index: true,

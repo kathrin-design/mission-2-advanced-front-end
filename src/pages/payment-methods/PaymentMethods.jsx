@@ -1,9 +1,9 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import PaymentHeader from "../../components/header/PaymentHeader";
-import CourseDetail from "../product-detail/CourseDetail";
-import OrderSummary from "./OrderSummary";
-import Methods from "./Methods";
+import CourseSummary from "../../components/course/CourseSummary";
+import OrderSummary from "./component/OrderSummary";
+import Methods from "./component/Methods";
 
 const PaymentMethods = () => {
   const location = useLocation();
@@ -11,7 +11,7 @@ const PaymentMethods = () => {
   const navigate = useNavigate();
 
   const handleProceedToPayment = () => {
-    navigate("bayar", { state: { course } });
+    navigate("pembayaran", { state: { course } });
   };
 
   if (!course) {
@@ -26,6 +26,7 @@ const PaymentMethods = () => {
           <div className="col-12 col-lg-7 g-4">
             <Methods title="Metode Pembayaran" />
             <OrderSummary
+              className="border rounded-2 p-4"
               course={course}
               button={
                 <button
@@ -38,7 +39,10 @@ const PaymentMethods = () => {
             />
           </div>
 
-          <CourseDetail className="col-lg-5" />
+          <CourseSummary
+            courseImage={<img src={course.image} className="w-100 mb-3" />}
+            className="col-lg-5"
+          />
         </div>
       </div>
     </>

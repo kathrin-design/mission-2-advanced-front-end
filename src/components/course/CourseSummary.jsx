@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 
-const CourseDetail = ({ button, className }) => {
+const CourseSummary = ({ button, className, courseImage }) => {
   const location = useLocation();
   const { course } = location.state || {};
 
@@ -14,7 +14,8 @@ const CourseDetail = ({ button, className }) => {
   return (
     <div className={`col-12  ${className}`}>
       <div className="border rounded-2 bg-white p-3">
-        <p className="text-black fs-5 fw-semibold">{course.description}</p>
+        {courseImage}
+        <p className="text-black fs-6 fw-medium">{course.description}</p>
         <div className="d-flex justify-content-between mt-2">
           <div className="d-flex">
             <div className="green fs-5 pe-2">Rp {course.price / 1000}K</div>
@@ -22,7 +23,7 @@ const CourseDetail = ({ button, className }) => {
               Rp {originalPrice / 1000}K
             </div>
           </div>
-          <div className="bg-warning text-white rounded-4 px-3 d-flex align-items-center">
+          <div className="bg-warning text-white rounded-3 d-flex align-items-center fw-medium px-sm-1">
             Diskon{" "}
             {(((originalPrice - course.price) / originalPrice) * 100).toFixed(
               0
@@ -48,7 +49,7 @@ const CourseDetail = ({ button, className }) => {
                 <i className="fa-solid fa-file-pen"></i> Pretest
               </div>
             </div>
-            <div className="ps-5 text-secondary">
+            <div className="text-secondary">
               <div className="d-flex align-items-center gap-2">
                 <i className="fa-solid fa-video"></i> 49 Video
               </div>
@@ -67,4 +68,4 @@ const CourseDetail = ({ button, className }) => {
   );
 };
 
-export default CourseDetail;
+export default CourseSummary;

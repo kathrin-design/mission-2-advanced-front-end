@@ -1,5 +1,5 @@
 import React from "react";
-import "./order.css";
+import "../order.css";
 
 const OrderList = ({ status, course }) => {
   if (!course) {

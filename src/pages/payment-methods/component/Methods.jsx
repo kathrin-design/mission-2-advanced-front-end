@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import Method from "./Method";
-import "./payment-methods.css";
-import logoBCA from "../../assets/logo-bca.png";
-import logoBRI from "../../assets/logo-bri.png";
-import logoBNI from "../../assets/logo-bni.png";
-import logoMandiri from "../../assets/logoMandiri.webp";
-import logoDana from "../../assets/logo-dana.jpg";
-import logoLinkAja from "../../assets/logo-linkaja.png";
-import logoOvo from "../../assets/logo-ovo.png";
-import logoShopeepay from "../../assets/logo-shopeepay.png";
-import logoJCB from "../../assets/logo-jcb.jpg";
-import logoMasterCard from "../../assets/logo-mastercard.png";
-import logoVisa from "../../assets/logo-visa.png";
+import "../payment-methods.css";
+import logoBCA from "../../../assets/logo-bca.png";
+import logoBRI from "../../../assets/logo-bri.png";
+import logoBNI from "../../../assets/logo-bni.png";
+import logoMandiri from "../../../assets/logoMandiri.webp";
+import logoDana from "../../../assets/logo-dana.jpg";
+import logoLinkAja from "../../../assets/logo-linkaja.png";
+import logoOvo from "../../../assets/logo-ovo.png";
+import logoShopeepay from "../../../assets/logo-shopeepay.png";
+import logoJCB from "../../../assets/logo-jcb.jpg";
+import logoMasterCard from "../../../assets/logo-mastercard.png";
+import logoVisa from "../../../assets/logo-visa.png";
 
 const Methods = ({ title, className, button }) => {
   const [expandedSection, setExpandedSection] = useState(null);
@@ -40,20 +40,20 @@ const Methods = ({ title, className, button }) => {
       {expandedSection === "transferBank" && (
         <>
           <Method
-            img={<img src={logoBCA} alt="logo BCA" className="logo me-3" />}
+            img={<img src={logoBCA} alt="logo BCA" className="logo-bank me-3" />}
             title="Bank BCA"
           />
           <Method
-            img={<img src={logoBNI} alt="logo BNI" className="logo me-3" />}
+            img={<img src={logoBNI} alt="logo BNI" className="logo-bank me-3" />}
             title="Bank BNI"
           />
           <Method
-            img={<img src={logoBRI} alt="logo BRI" className="logo me-3" />}
+            img={<img src={logoBRI} alt="logo BRI" className="logo-bank me-3" />}
             title="Bank BRI"
           />
           <Method
             img={
-              <img src={logoMandiri} alt="logo Mandiri" className="logo me-3" />
+              <img src={logoMandiri} alt="logo Mandiri" className="logo-bank me-3" />
             }
             title="Bank Mandiri"
           />

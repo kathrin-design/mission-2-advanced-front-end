@@ -15,9 +15,9 @@ const PaymentSuccessful = () => {
 
     let matchingItem;
 
-    order.forEach((item) => {
-      if (courseId === item.courseId) {
-        matchingItem = item;
+    order.forEach((orderItem) => {
+      if (courseId === orderItem.courseId) {
+        matchingItem = orderItem;
       }
     });
 
@@ -32,11 +32,11 @@ const PaymentSuccessful = () => {
 
     let orderQuantity = 0;
 
-    order.forEach((item) => {
-      orderQuantity += item.quantity;
-    })
+    order.forEach((orderItem) => {
+      orderQuantity += orderItem.quantity;
+    });
 
-    console.log(orderQuantity)
+    console.log(orderQuantity);
     console.log(order);
   };
 
