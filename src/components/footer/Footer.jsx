@@ -11,13 +11,13 @@ const Footer = ({ classFooter }) => {
           <div>
             <img src={Logo} alt="Logo VideoBelajar" />
           </div>
-          <p className="fs-5 fw-bold DM_Sans mb-1">
+          <p className="fs-5 fw-bold mb-1">
             Gali Potensi Anda Melalui Pembelajaran Video di hariesok.id!
           </p>
-          <p className="fs-6 DM_Sans mb-1">
+          <p className="fs-6 mb-1">
             Jl. Usman Effendi No. 50 Lowokwaru, Malang
           </p>
-          <p className="fs-6 DM_Sans">+62-877-7123-1234</p>
+          <p className="fs-6">+62-877-7123-1234</p>
         </div>
         <div className="d-flex flex-row">
           <div className="d-flex flex-column mx-1">
@@ -41,7 +41,7 @@ const Footer = ({ classFooter }) => {
             <p className="m-0">Bantuan</p>
           </div>
         </div>
-        <div className="d-flex flex-column mx-1 DM_Sans">
+        <div className="d-flex flex-column mx-1">
           <p className="fs-6 fw-bold">Komunitas</p>
           <div className="d-flex flex-column text-secondary gap-2">
             <p className="m-0">Tips Sukses</p>
@@ -64,7 +64,7 @@ const Footer = ({ classFooter }) => {
             <i className="fa-brands fa-twitter text-dark border border-2 p-2 rounded-circle"></i>
           </a>
         </div>
-        <p className="my-auto align-items-center text-secondary DM_Sans fw-medium pt-2">
+        <p className="my-auto align-items-center text-secondary fw-medium pt-2">
           @2023 videobelajar All Rights Reserved.
         </p>
       </div>

@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <>
       <Header />
-      <main className="w-100 d-flex flex-column">
+      <main>
         <HeroCard />
         <Courses />
         <ClosingCard />

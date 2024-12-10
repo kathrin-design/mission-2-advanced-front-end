@@ -3,7 +3,7 @@ import { persist } from "zustand/middleware";
 
 const useOrderStore = create(
   persist(
-    (set, get) => ({
+    (set) => ({
       orders: [],
 
       addOrder: (newOrder) =>

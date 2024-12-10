@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import PaymentHeader from "../components/header/PaymentHeader";
 import paymentSuccessful from "../assets/payment-successful.png";
-import order from "../data/order";
 
 const PaymentSuccessful = () => {
   const navigate = useNavigate();

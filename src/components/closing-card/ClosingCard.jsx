@@ -1,5 +1,5 @@
 import React from "react";
-import './closing-card.css'
+import "./closing-card.css";
 
 const ClosingCard = () => {
   return (
@@ -7,14 +7,14 @@ const ClosingCard = () => {
       <div className="closing w-100 px-1 mx-2 d-flex flex-column justify-content-center align-items-center rounded-3 pb-2">
         <div className="w-md-50 px-2 py-4">
           <div className="d-flex flex-column justify-content-center align-items-center">
-            <p className="text-secondary fs-6 fw-bold DM_Sans text-center">
+            <p className="text-secondary fs-6 fw-bold text-center">
               NEWSLETTER
             </p>
             <div>
               <h3 className="poppins text-white text-center">
                 Mau Belajar Lebih Banyak?
               </h3>
-              <p className="DM_Sans text-white text-center">
+              <p className=" text-white text-center">
                 Daftarkan dirimu untuk mendapatkan informasi terbaru dan
                 penawaran spesial dari program-program terbaik hariesok.id
               </p>

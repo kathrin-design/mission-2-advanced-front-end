@@ -13,7 +13,7 @@ import logoJCB from "../../../assets/logo-jcb.jpg";
 import logoMasterCard from "../../../assets/logo-mastercard.png";
 import logoVisa from "../../../assets/logo-visa.png";
 
-const Methods = ({ title, className, button }) => {
+const MethodWrapper = ({ title, className, button }) => {
   const [expandedSection, setExpandedSection] = useState(null);
 
   const toggleSection = (section) => {
@@ -143,4 +143,4 @@ const Methods = ({ title, className, button }) => {
   );
 };
 
-export default Methods;
+export default MethodWrapper;

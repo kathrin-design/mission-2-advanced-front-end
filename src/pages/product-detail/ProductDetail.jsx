@@ -5,7 +5,7 @@ import "./product-detail.css";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import CourseContentToggler from "./component/CourseContentToggler";
-import TutorAndRating from "./component/TutorAndRating";
+import TutorSummary from "./component/TutorSummary";
 import CourseSummary from "../../components/course/CourseSummary";
 
 const ProductDetail = () => {
@@ -92,7 +92,7 @@ const ProductDetail = () => {
               <p className="text-black fs-5 fw-semibold">Deskripsi</p>
               <p className="text-secondary">{course.description}</p>
             </div>
-            <TutorAndRating
+            <TutorSummary
               title="Belajar bersama Tutor Profesional"
               as1="Senior Talent Aquisition di"
               at1="WingsGroup"
@@ -107,7 +107,7 @@ const ProductDetail = () => {
               <CourseContentToggler />
               <CourseContentToggler />
             </div>
-            <TutorAndRating
+            <TutorSummary
               title="Rating dan Review"
               as1="Alumni Batch 2"
               at1=""

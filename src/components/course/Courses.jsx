@@ -31,7 +31,7 @@ const Courses = () => {
           <p className="text-start fw-semibold fs-4 poppins text-dark mb-1">
             Koleksi Video Pembelajaran Unggulan
           </p>
-          <p className="text-start text-secondary fw-medium DM_Sans">
+          <p className="text-start text-secondary fw-medium">
             Jelajahi Dunia Pengetahuan Melalui Pilihan Kami!
           </p>
         </div>
@@ -148,10 +148,10 @@ const Courses = () => {
                 alt="Tutor"
               />
               <div className="d-flex flex-column w-100">
-                <div className="text-dark fw-semibold DM_Sans text-truncate">
+                <div className="text-dark fw-semibold text-truncate">
                   {course.tutor.name}
                 </div>
-                <div className="text-secondary DM_Sans fs-6 d-flex flex-wrap">
+                <div className="text-secondary fs-6 d-flex flex-wrap">
                   <p className="m-0">{course.tutor.jobTitle}</p>
                   <p className="m-0">
                     di{" "}
@@ -197,7 +197,7 @@ const Courses = () => {
                     }
                   })}
                 </div>
-                <div className="text-secondary fs-6 DM_Sans text-decoration-underline">
+                <div className="text-secondary fs-6 text-decoration-underline">
                   {course.rating.stars} ({course.rating.count})
                 </div>
               </div>

@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import PaymentHeader from "../../components/header/PaymentHeader";
 import CourseSummary from "../../components/course/CourseSummary";
 import OrderSummary from "./component/OrderSummary";
-import Methods from "./component/Methods";
+import MethodWrapper from "./component/MethodWrapper";
 
 const PaymentMethods = () => {
   const location = useLocation();
@@ -24,7 +24,7 @@ const PaymentMethods = () => {
       <div className="container py-4">
         <div className="row g-4">
           <div className="col-12 col-lg-7 g-4">
-            <Methods title="Metode Pembayaran" />
+            <MethodWrapper title="Metode Pembayaran" />
             <OrderSummary
               className="border rounded-2 p-4"
               course={course}
