@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { registerUser } from "../services/api/userService";
 
-const useRegisterStore = create((set, get) => ({
+const useRegister = create((set) => ({
   userName: "",
   email: "",
   gender: "",
@@ -52,4 +52,4 @@ const useRegisterStore = create((set, get) => ({
   },
 }));
 
-export default useRegisterStore;
+export default useRegister;

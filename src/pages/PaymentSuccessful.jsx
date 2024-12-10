@@ -11,33 +11,6 @@ const PaymentSuccessful = () => {
 
   const handleToOrderPage = () => {
     navigate("/order", { state: { course } });
-    const courseId = course.id;
-
-    let matchingItem;
-
-    order.forEach((orderItem) => {
-      if (courseId === orderItem.courseId) {
-        matchingItem = orderItem;
-      }
-    });
-
-    if (matchingItem) {
-      matchingItem.quantity += 1;
-    } else {
-      order.push({
-        courseId: courseId,
-        quantity: 1,
-      });
-    }
-
-    let orderQuantity = 0;
-
-    order.forEach((orderItem) => {
-      orderQuantity += orderItem.quantity;
-    });
-
-    console.log(orderQuantity);
-    console.log(order);
   };
 
   return (

@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import "./order.css";
 import Header from "../../components/header/Header";
 import Sidebar from "../profile/Sidebar";
 import Footer from "../../components/footer/Footer";
-import "./order.css";
-import OrderList from "./component/OrderList";
-
-console.log(dayjs());
+import courses from "../../data/courses";
+import usePaymentTime from "../../stores/usePaymentTimeStore";
+import formatCurrency from "../../utils/Money";
+import useOrderStore from "../../stores/useOrderStore";
 
 const Order = () => {
-  const location = useLocation();
-  const { course } = location.state || {};
+  const { orders } = useOrderStore();
+  const { targetTime } = usePaymentTime();
+  const adminFee = 7000;
 
   const [activeTab, setActiveTab] = useState("semua");
 
@@ -18,44 +19,29 @@ const Order = () => {
     setActiveTab(tab);
   };
 
-  const ordersData = [
-    {
-      id: 1,
-      invoice: "12",
-      status: "Berhasil",
-    },
-    {
-      id: 2,
-      invoice: "2",
-      status: "Gagal",
-    },
-    {
-      id: 3,
-      invoice: "2",
-      status: "Belum Bayar",
-    },
-    {
-      id: 4,
-      invoice: "10",
-      status: "Berhasil",
-    },
-    {
-      id: 5,
-      invoice: "10",
-      status: "Berhasil",
-    },
-  ];
+  const paymentTime = targetTime
+    ? dayjs(targetTime).format("DD MMM YYYY HH.mm")
+    : "Not Available";
 
-  const filteredOrders =
-    activeTab === "semua"
-      ? ordersData
-      : activeTab === "menunggu"
-      ? ordersData.filter(
-          (order) => order.status.toLowerCase() === "belum bayar"
-        )
-      : activeTab === "berhasil"
-      ? ordersData.filter((order) => order.status.toLowerCase() === "berhasil")
-      : ordersData.filter((order) => order.status.toLowerCase() === "gagal");
+  const enrichedOrders = orders.map((orderItem) => {
+    const courseData = courses.find(
+      (course) => course.id === orderItem.orderId
+    );
+    return {
+      ...orderItem,
+      course: courseData || null,
+    };
+  });
+
+  const filteredOrders = enrichedOrders.filter((order) => {
+    if (activeTab === "semua") return true;
+    if (activeTab === "menunggu")
+      return order.status.toLowerCase() === "belum bayar";
+    if (activeTab === "berhasil")
+      return order.status.toLowerCase() === "berhasil";
+    if (activeTab === "gagal") return order.status.toLowerCase() === "gagal";
+    return false;
+  });
 
   return (
     <>
@@ -71,141 +57,43 @@ const Order = () => {
             <div className="border rounded-2 bg-white d-flex flex-column p-3 gap-3">
               <div className="d-flex flex-wrap justify-content-between align-items-center">
                 <div className="d-flex flex-row gap-4">
-                  <div
-                    className={`d-flex flex-column gap-2 cursor-pointer ${
-                      activeTab === "semua" ? "active" : ""
-                    }`}
-                    onClick={() => handleTabClick("semua")}
-                  >
+                  {["semua", "menunggu", "berhasil", "gagal"].map((tab) => (
                     <div
-                      className={`tab-text fs-6 fw-medium ${
-                        activeTab === "semua" ? "text-red" : "text-secondary"
+                      key={tab}
+                      className={`d-flex flex-column gap-2 cursor-pointer ${
+                        activeTab === tab ? "active" : ""
                       }`}
+                      onClick={() => handleTabClick(tab)}
                     >
-                      Semua Pesanan
+                      <div
+                        className={`tab-text fs-6 fw-medium ${
+                          activeTab === tab ? "text-red" : "text-secondary"
+                        }`}
+                      >
+                        {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                      </div>
+                      {activeTab === tab && (
+                        <div className="tab-indicator"></div>
+                      )}
                     </div>
-                    {activeTab === "semua" && (
-                      <div className="tab-indicator"></div>
-                    )}
-                  </div>
-
-                  <div
-                    className={`d-flex flex-column gap-2 cursor-pointer ${
-                      activeTab === "menunggu" ? "active" : ""
-                    }`}
-                    onClick={() => handleTabClick("menunggu")}
-                  >
-                    <div
-                      className={`fs-6 fw-medium ${
-                        activeTab === "menunggu" ? "text-red" : "text-secondary"
-                      }`}
-                    >
-                      Menunggu
-                    </div>
-                    {activeTab === "menunggu" && (
-                      <div className="tab-indicator"></div>
-                    )}
-                  </div>
-
-                  <div
-                    className={`d-flex flex-column gap-2 cursor-pointer ${
-                      activeTab === "berhasil" ? "active" : ""
-                    }`}
-                    onClick={() => handleTabClick("berhasil")}
-                  >
-                    <div
-                      className={`fs-6 fw-medium ${
-                        activeTab === "berhasil" ? "text-red" : "text-secondary"
-                      }`}
-                    >
-                      Berhasil
-                    </div>
-                    {activeTab === "berhasil" && (
-                      <div className="tab-indicator"></div>
-                    )}
-                  </div>
-
-                  <div
-                    className={`d-flex flex-column gap-2 cursor-pointer ${
-                      activeTab === "gagal" ? "active" : ""
-                    }`}
-                    onClick={() => handleTabClick("gagal")}
-                  >
-                    <div
-                      className={`fs-6 fw-medium ${
-                        activeTab === "gagal" ? "text-red" : "text-secondary"
-                      }`}
-                    >
-                      Gagal
-                    </div>
-                    {activeTab === "gagal" && (
-                      <div className="tab-indicator"></div>
-                    )}
-                  </div>
-                </div>
-
-                <div className="d-flex flex-row gap-2">
-                  <div className="d-flex border rounded-2 align-items-center">
-                    <input
-                      type="text"
-                      placeholder="Cari Kelas"
-                      className="text-secondary fw-medium border-0 p-2 search-input"
-                    />
-                    <i className="fa-solid fa-magnifying-glass p-2"></i>
-                  </div>
-                  <div className="dropdown border rounded-2">
-                    <button
-                      className="btn btn-outline-secondary dropdown-toggle bg-white border-0 text-secondary px-4 d-flex align-items-center fw-medium"
-                      type="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      Urutkan
-                    </button>
-                    <ul className="dropdown-menu">
-                      <li>
-                        <a
-                          className="dropdown-item  text-secondary text-center"
-                          href="#"
-                        >
-                          Harga Terendah
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="dropdown-item  text-secondary text-center"
-                          href="#"
-                        >
-                          Harga Tertinggi
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="dropdown-item text-secondary text-center"
-                          href="#"
-                        >
-                          Rating Terendah
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="dropdown-item text-secondary text-center"
-                          href="#"
-                        >
-                          Rating Tertinggi
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
+                  ))}
                 </div>
               </div>
 
               {filteredOrders.length > 0 ? (
                 filteredOrders.map((order) => (
-                  <div key={order.id}>
-                    <OrderList
-                      course={course}
-                      status={
+                  <div key={order.orderId}>
+                    <div
+                      id="order"
+                      className="border rounded-3 d-flex flex-column"
+                    >
+                      <div className="d-flex flex-row justify-content-between align-items-center border-bottom p-3">
+                        <p className="text-secondary fs-6 fw-semibold my-auto">
+                          No. Invoice: {order.orderId}
+                        </p>
+                        <p className="text-secondary fs-6 fw-semibold my-auto">
+                          Waktu Pembayaran: {paymentTime}
+                        </p>
                         <p
                           className={`fs-6 fw-medium p-1 px-3 rounded-3 my-auto ${
                             order.status === "Berhasil"
@@ -217,8 +105,55 @@ const Order = () => {
                         >
                           {order.status}
                         </p>
-                      }
-                    />
+                      </div>
+
+                      {order.course && (
+                        <div className="d-flex flex-row gap-4 p-3">
+                          <div className="d-flex flex-row w-100 justify-content-between align-items-center">
+                            <div className="d-flex flex-row align-items-center gap-2 w-70">
+                              <img
+                                src={order.course.image}
+                                alt="course image"
+                                className="rounded-3 img-class"
+                              />
+                              <div className="d-flex flex-column">
+                                <p className="text-dark fs-5 fw-semibold m-0">
+                                  {order.course.name}
+                                </p>
+                                <p className="text-secondary fs-6 fw-normal m-0">
+                                  {order.course.description}
+                                </p>
+                              </div>
+                            </div>
+                            <div className="d-flex border-start px-4 flex-column gap-1 justify-content-start">
+                              <p className="text-secondary text-start fs-6 fw-medium m-0">
+                                Harga
+                              </p>
+                              <p className="text-dark fs-5 text-start m-0 fw-semibold w-100">
+                                Rp {formatCurrency(order.course.price)}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      <div className="bg-default p-3 d-flex flex-row border-top justify-content-between align-items-center">
+                        <p className="text-secondary fs-6 fw-medium m-0">
+                          Total Pembayaran{" "}
+                          <span className="text-secondary fw-normal">
+                            (+biaya admin)
+                          </span>
+                        </p>
+                        <div className="d-flex px-4 flex-column gap-1 justify-content-start">
+                          <p className="green fw-semibold fs-5 m-0 ps-4 w-100">
+                            Rp{" "}
+                            {order.course
+                              ? formatCurrency(order.course.price + adminFee)
+                              : "0"}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 ))
               ) : (

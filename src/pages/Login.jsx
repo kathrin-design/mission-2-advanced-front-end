@@ -6,7 +6,7 @@ import Title from "../components/form-component/Title";
 import Subtitle from "../components/form-component/SubTitle";
 import BtnGoogle from "../components/form-component/BtnGoogle";
 import "../index.css";
-import loginStore from "../stores/useLoginStore";
+import useLogin from "../stores/useLoginStore";
 
 const Login = () => {
   const [errors, setErrors] = useState({
@@ -26,7 +26,7 @@ const Login = () => {
     setEmail,
     setPassword,
     login,
-  } = loginStore();
+  } = useLogin();
 
   const validateForm = () => {
     let valid = true;

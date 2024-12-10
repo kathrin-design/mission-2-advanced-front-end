@@ -1,54 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./payment.css";
 import PaymentHeader from "../../components/header/PaymentHeader";
 import CourseSummary from "../../components/course/CourseSummary";
 import OrderSummary from "../payment-methods/component/OrderSummary";
 import logoBCA from "../../assets/logo-bca.png";
-
-dayjs.extend(dayjs_plugin_duration);
+import order from "../../data/order";
+import usePaymentTime from "../../stores/usePaymentTimeStore";
+import useOrderStore from "../../stores/useOrderStore";
 
 const Payment = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { course } = location.state || {};
 
-  const [countdown, setCountdown] = useState(null);
+  const { paymentTime, saveTimeToLocalStorage } = usePaymentTime();
+  const [copied, setCopied] = useState(false);
+  const textToCopy = "11739 081234567890";
 
-  const element = document.getElementById("countdown");
+  const { addOrder } = useOrderStore();
 
   useEffect(() => {
-    const savedTargetTime = localStorage.getItem("targetTime");
-    let targetTime;
-
-    if (savedTargetTime) {
-      targetTime = dayjs(savedTargetTime);
-    } else {
-      targetTime = dayjs().add(1, "day");
-      localStorage.setItem("targetTime", targetTime.toString());
-    }
-
-    const interval = setInterval(() => {
-      const now = dayjs();
-      const diff = targetTime.diff(now);
-
-      if (diff <= 0) {
-        clearInterval(interval);
-        setCountdown("Countdown Complete!");
-        localStorage.removeItem("targetTime");
-        return;
-      }
-
-      const duration = dayjs.duration(diff);
-      setCountdown({
-        hours: duration.hours(),
-        minutes: duration.minutes(),
-        seconds: duration.seconds(),
-      });
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
+    saveTimeToLocalStorage();
+  }, [saveTimeToLocalStorage]);
 
   if (!course) {
     return <div>No course data available</div>;
@@ -60,10 +34,18 @@ const Payment = () => {
 
   const handleToOrderPage = () => {
     navigate("selesai", { state: { course } });
-  };
+    const courseId = course.id;
 
-  const [copied, setCopied] = useState(false);
-  const textToCopy = "11739 081234567890";
+    order.push({
+      orderId: courseId,
+      status: "Belum Bayar",
+    });
+
+    addOrder({
+      orderId: course.id,
+      status: "Belum Bayar",
+    });
+  };
 
   const handleCopy = () => {
     navigator.clipboard
@@ -79,26 +61,21 @@ const Payment = () => {
       });
   };
 
-  const btnBuyCourse = document.querySelectorAll(".btn-buy-course");
-  btnBuyCourse.forEach((button) => {
-    button.addEventListener("click", () => {
-      console.log(button.course);
-    });
-  });
-
   return (
     <>
       <PaymentHeader />
+
       <p
-        id="countdown"
+        id="paymentTime"
         className="bg-warning-subtle text-center text-secondary fw-semibold py-3"
       >
-        {countdown
-          ? countdown === "Countdown Complete!"
-            ? countdown
-            : `Selesaikan pemesanan dalam ${countdown.hours} : ${countdown.minutes} : ${countdown.seconds}`
+        {paymentTime
+          ? typeof paymentTime === "string"
+            ? paymentTime
+            : `Selesaikan pemesanan dalam ${paymentTime.hours} : ${paymentTime.minutes} : ${paymentTime.seconds}`
           : "Sedang memuat..."}
       </p>
+
       <div className="container py-4">
         <div className="row g-5">
           <div className="col-12 col-lg-7">
@@ -121,6 +98,7 @@ const Payment = () => {
                   </p>
                 </div>
               </div>
+
               <OrderSummary
                 course={course}
                 button={
@@ -142,6 +120,7 @@ const Payment = () => {
               />
             </div>
           </div>
+
           <CourseSummary
             course={course}
             courseImage={<img src={course.image} className="w-100 mb-3" />}

@@ -2,11 +2,11 @@ import React, { useState, useRef, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Logo from "../../assets/Logo.png";
 import "./header.css";
-import loginStore from "../../stores/useLoginStore";
+import useLogin from "../../stores/useLoginStore";
 
 const Header = () => {
   const navigate = useNavigate();
-  const { userName, isLoggedIn, logout } = loginStore();
+  const { userName, isLoggedIn, logout } = useLogin();
 
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
 

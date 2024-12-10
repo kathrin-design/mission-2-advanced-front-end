@@ -15,7 +15,6 @@ const Profile = () => {
     if (storedUser) {
       const parsedUser = JSON.parse(storedUser);
       setUser(parsedUser);
-      console.log(parsedUser);
     }
   }, [setUser]);
 

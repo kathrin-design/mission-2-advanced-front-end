@@ -128,7 +128,7 @@ const Courses = () => {
             to="/detail-produk"
             state={{ course }}
             className="p-3 d-flex flex-column bg-white border rounded-3 text-decoration-none course m-auto"
-            data-course-name={course.name}
+            data-course-id={course.id}
           >
             <img className="rounded-3" src={course.image} alt="Course" />
 

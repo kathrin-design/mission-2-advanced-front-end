@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import updateUser from "../services/api/apiClient";
 
-const useProfileStore = create((set) => ({
+const useProfile = create((set) => ({
   user: {
     username: "",
     email: "",
@@ -30,4 +30,4 @@ const useProfileStore = create((set) => ({
   },
 }));
 
-export default useProfileStore;
+export default useProfile;

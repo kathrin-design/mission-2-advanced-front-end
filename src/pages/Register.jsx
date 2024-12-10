@@ -1,13 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import useRegisterStore from "../stores/useRegisterStore";
+import useRegister from "../stores/useRegisterStore";
 import Header from "../components/header/Header";
 import Title from "../components/form-component/Title";
 import Subtitle from "../components/form-component/SubTitle";
 import BtnGoogle from "../components/form-component/BtnGoogle";
 import "../index.css";
 import IdnFlag from "../assets/idn-flag.png";
-import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -27,7 +27,7 @@ const Register = () => {
     setPassword,
     saveToLocalStorage,
     saveToAPI,
-  } = useRegisterStore();
+  } = useRegister();
 
   const handleRegister = async (e) => {
     e.preventDefault();
