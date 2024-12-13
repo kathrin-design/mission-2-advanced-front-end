@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Method = ({ img, title }) => {
+export const Method = ({ img, title }) => {
   const [isClick, setIsClick] = useState(false);
 
   const toggleClick = () => setIsClick(!isClick);
@@ -22,5 +22,3 @@ const Method = ({ img, title }) => {
     </div>
   );
 };
-
-export default Method;

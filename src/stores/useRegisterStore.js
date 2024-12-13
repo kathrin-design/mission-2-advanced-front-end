@@ -1,7 +1,7 @@
 import { create } from "zustand";
-import { registerUser } from "../services/api/userService";
+import { createUser } from "../services/api/userService";
 
-const useRegister = create((set) => ({
+export const useRegister = create((set) => ({
   userName: "",
   email: "",
   gender: "",
@@ -39,7 +39,7 @@ const useRegister = create((set) => ({
         phoneNumber: state.phoneNumber,
         password: state.password,
       };
-      registerUser(userData)
+      createUser(userData)
         .then((response) => {
           console.log("User successfully registered:", response);
         })
@@ -51,5 +51,3 @@ const useRegister = create((set) => ({
     });
   },
 }));
-
-export default useRegister;

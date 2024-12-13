@@ -1,19 +1,19 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import App from "./App.jsx";
+import { App } from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Login from "./pages/Login.jsx";
-import Register from "./pages/Register.jsx";
-import Profile from "./pages/profile/Profile.jsx";
-import AllProducts from "./pages/all-product/AllProducts.jsx";
-import ProductDetail from "./pages/product-detail/ProductDetail.jsx";
-import PaymentMethods from "./pages/payment-methods/PaymentMethods.jsx";
-import Payment from "./pages/payment/Payment.jsx";
-import ChangePaymentMethod from "./pages/ChangePaymentMethod.jsx";
-import Video from "./pages/video/Video.jsx";
-import Class from "./pages/class/Class.jsx";
-import Order from "./pages/order/Order.jsx";
-import PaymentSuccessful from "./pages/PaymentSuccessful.jsx";
+import { Login } from "./pages/Login.jsx";
+import { Register } from "./pages/Register.jsx";
+import { Profile } from "./pages/profile/Profile.jsx";
+import { Products } from "./pages/products/Products.jsx";
+import { ProductDetail } from "./pages/product-detail/ProductDetail.jsx";
+import { PaymentMethods } from "./pages/payment-methods/PaymentMethods.jsx";
+import { Payment } from "./pages/payment/Payment.jsx";
+import { ChangePaymentMethod } from "./pages/ChangePaymentMethod.jsx";
+import { Video } from "./pages/video/Video.jsx";
+import { Class } from "./pages/class/Class.jsx";
+import { Order } from "./pages/order/Order.jsx";
+import { PaymentSuccessful } from "./pages/PaymentSuccessful.jsx";
 
 const router = createBrowserRouter([
   {
@@ -46,7 +46,7 @@ const router = createBrowserRouter([
       },
       {
         path: "kategori",
-        element: <AllProducts />,
+        element: <Products />,
       },
       {
         path: "detail-produk",

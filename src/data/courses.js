@@ -1,23 +1,23 @@
-import Card1 from "../assets/card-1.png";
-import Card2 from "../assets/card-2.png";
-import Card3 from "../assets/card-3.png";
-import Card4 from "../assets/card-4.png";
-import Card5 from "../assets/card-5.png";
-import Card6 from "../assets/card-6.png";
-import Card7 from "../assets/card-7.png";
-import Card8 from "../assets/card-8.png";
-import Card9 from "../assets/card-9.png";
-import Avatar1 from "../assets/img_avatar_1.jpg";
-import Avatar2 from "../assets/img_avatar_2.jpg";
-import Avatar3 from "../assets/img_avatar_3.jpg";
-import Avatar4 from "../assets/img_avatar_4.jpg";
-import Avatar5 from "../assets/img_avatar_5.jpg";
-import Avatar6 from "../assets/img_avatar_6.jpg";
-import Avatar7 from "../assets/img_avatar_7.jpg";
-import Avatar8 from "../assets/img_avatar_8.jpg";
-import Avatar9 from "../assets/img_avatar_9.jpg";
+import Card1 from "../assets/card/card-1.png";
+import Card2 from "../assets/card/card-2.png";
+import Card3 from "../assets/card/card-3.png";
+import Card4 from "../assets/card/card-4.png";
+import Card5 from "../assets/card/card-5.png";
+import Card6 from "../assets/card/card-6.png";
+import Card7 from "../assets/card/card-7.png";
+import Card8 from "../assets/card/card-8.png";
+import Card9 from "../assets/card/card-9.png";
+import Avatar1 from "../assets/avatar/img_avatar_1.jpg";
+import Avatar2 from "../assets/avatar/img_avatar_2.jpg";
+import Avatar3 from "../assets/avatar/img_avatar_3.jpg";
+import Avatar4 from "../assets/avatar/img_avatar_4.jpg";
+import Avatar5 from "../assets/avatar/img_avatar_5.jpg";
+import Avatar6 from "../assets/avatar/img_avatar_6.jpg";
+import Avatar7 from "../assets/avatar/img_avatar_7.jpg";
+import Avatar8 from "../assets/avatar/img_avatar_8.jpg";
+import Avatar9 from "../assets/avatar/img_avatar_9.jpg";
 
-const courses = [
+export const courses = [
   {
     id: 1,
     invoice: 1,
@@ -207,5 +207,3 @@ const courses = [
     field: "Pemrograman",
   },
 ];
-
-export default courses;

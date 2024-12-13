@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import Header from "../../components/header/Header";
-import Footer from "../../components/footer/Footer";
-import Sidebar from "../profile/Sidebar";
-import ClassList from "./ClassList";
-import "./class.css";
 import { useNavigate } from "react-router-dom";
+import { Header } from "../../components/header/Header";
+import { Footer } from "../../components/footer/Footer";
+import { Sidebar } from "../profile/Sidebar";
+import { ClassList } from "./ClassList";
+import "./class.css";
 
-const Class = () => {
+export const Class = () => {
   const navigate = useNavigate();
 
   const [activeTab, setActiveTab] = useState("semua");
@@ -197,5 +197,3 @@ const Class = () => {
     </>
   );
 };
-
-export default Class;

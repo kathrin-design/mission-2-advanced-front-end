@@ -1,7 +1,7 @@
 import { create } from "zustand";
-import updateUser from "../services/api/apiClient";
+import { updateUser } from "../services/api/userService";
 
-const useProfile = create((set) => ({
+export const useProfile = create((set) => ({
   user: {
     username: "",
     email: "",
@@ -29,5 +29,3 @@ const useProfile = create((set) => ({
     }
   },
 }));
-
-export default useProfile;

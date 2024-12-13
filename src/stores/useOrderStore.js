@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-const useOrderStore = create(
+export const useOrder = create(
   persist(
     (set) => ({
       orders: [],
@@ -23,5 +23,3 @@ const useOrderStore = create(
     }
   )
 );
-
-export default useOrderStore;

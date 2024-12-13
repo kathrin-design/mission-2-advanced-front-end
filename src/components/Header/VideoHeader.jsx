@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./video-header.css";
-import loginStore from "../../stores/useLoginStore";
+import { useLogin } from "../../stores/useLoginStore";
 
-const VideoHeader = () => {
+export const VideoHeader = () => {
   const navigate = useNavigate();
-  const { userName, logout } = loginStore();
+  const { userName, logout } = useLogin();
 
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
   const [isProgressDropdownOpen, setIsProgressDropdownOpen] = useState(false);
@@ -178,5 +178,3 @@ const VideoHeader = () => {
     </nav>
   );
 };
-
-export default VideoHeader;

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./course.css";
-import FullStar from "../../assets/full-star.png";
-import HalfStar from "../../assets/half-star.png";
-import BlankStar from "../../assets/blank-star.png";
-import courses from "../../data/courses";
+import FullStar from "../../assets/rating/full-star.png";
+import HalfStar from "../../assets/rating/half-star.png";
+import BlankStar from "../../assets/rating/blank-star.png";
+import { courses } from "../../data/courses";
 
-const Courses = () => {
+export const Courses = () => {
   const [activeTab, setActiveTab] = useState("semua");
 
   const handleTabClick = (tab) => {
@@ -209,5 +209,3 @@ const Courses = () => {
     </>
   );
 };
-
-export default Courses;

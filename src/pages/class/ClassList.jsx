@@ -1,8 +1,8 @@
 import React from "react";
-import classCard1 from "../../assets/card-1.png";
-import avatar1 from "../../assets/img_avatar_3.jpg";
+import classCard1 from "../../assets/card/card-1.png";
+import avatar1 from "../../assets/avatar/img_avatar_3.jpg";
 
-const ClassList = ({ modul, status, progress, button }) => {
+export const ClassList = ({ modul, status, progress, button }) => {
   return (
     <div className="border rounded-3 d-flex flex-column">
       <div className="d-flex flex-row justify-content-between align-items-center border-bottom p-3">
@@ -62,5 +62,3 @@ const ClassList = ({ modul, status, progress, button }) => {
     </div>
   );
 };
-
-export default ClassList;

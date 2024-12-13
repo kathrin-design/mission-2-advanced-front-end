@@ -1,8 +1,8 @@
 import React from "react";
-import Avatar1 from "../../../assets/img_avatar_8.jpg";
-import Avatar2 from "../../../assets/img_avatar_9.jpg";
+import Avatar1 from "../../../assets/avatar/img_avatar_8.jpg";
+import Avatar2 from "../../../assets/avatar/img_avatar_9.jpg";
 
-const TutorSummary = ({ title, as1, at1, as2, at2 }) => {
+export const TutorSummary = ({ title, as1, at1, as2, at2 }) => {
   return (
     <div className="border rounded-3 bg-white p-3">
       <p className="text-black fs-5 fw-semibold">{title}</p>
@@ -49,5 +49,3 @@ const TutorSummary = ({ title, as1, at1, as2, at2 }) => {
     </div>
   );
 };
-
-export default TutorSummary;

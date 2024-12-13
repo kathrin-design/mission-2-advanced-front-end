@@ -1,7 +1,7 @@
 import React from "react";
-import "./closing-card.css";
+import "../home.css";
 
-const ClosingCard = () => {
+export const NewsletterSection = () => {
   return (
     <div className="my-5 d-flex flex-column justify-content-center align-items-center">
       <div className="closing w-100 px-1 mx-2 d-flex flex-column justify-content-center align-items-center rounded-3 pb-2">
@@ -39,5 +39,3 @@ const ClosingCard = () => {
     </div>
   );
 };
-
-export default ClosingCard;

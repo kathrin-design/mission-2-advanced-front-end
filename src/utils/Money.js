@@ -1,5 +1,3 @@
-const formatCurrency = (amount) => {
+export const formatCurrency = (amount) => {
   return amount.toLocaleString("id-ID");
 };
-
-export default formatCurrency;

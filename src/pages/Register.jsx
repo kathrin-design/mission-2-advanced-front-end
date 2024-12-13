@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import useRegister from "../stores/useRegisterStore";
-import Header from "../components/header/Header";
-import Title from "../components/form-component/Title";
-import Subtitle from "../components/form-component/SubTitle";
-import BtnGoogle from "../components/form-component/BtnGoogle";
+import { useRegister } from "../stores/useRegisterStore";
+import { Header } from "../components/header/Header";
+import { Title } from "../components/form-component/Title";
+import { Subtitle } from "../components/form-component/SubTitle";
+import { BtnGoogle } from "../components/form-component/BtnGoogle";
 import "../index.css";
-import IdnFlag from "../assets/idn-flag.png";
+import logoFlag from "../assets/logo/logo-flag.png";
 
-const Register = () => {
+export const Register = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
@@ -134,7 +134,7 @@ const Register = () => {
               <div className="input_field d-flex flex-row">
                 <div className="border rounded me-2 d-flex flex-row align-items-center">
                   <div className="border-end p-2 bg-body-secondary rounded-start d-flex align-items-center">
-                    <img src={IdnFlag} alt="IDN Flag" />
+                    <img src={logoFlag} alt="IDN Flag" />
                   </div>
                   <div className="p-2 d-flex flex-row align-items-center gap-2">
                     <div className="text-secondary fw-semibold">+62</div>
@@ -239,5 +239,3 @@ const Register = () => {
     </>
   );
 };
-
-export default Register;

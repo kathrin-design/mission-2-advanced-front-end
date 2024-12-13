@@ -5,7 +5,7 @@ import { persist } from "zustand/middleware";
 
 dayjs.extend(duration);
 
-const usePaymentTime = create(
+export const usePaymentTime = create(
   persist((set, get) => ({
     paymentTime: null,
     targetTime: null,
@@ -63,5 +63,3 @@ const usePaymentTime = create(
     },
   }))
 );
-
-export default usePaymentTime;

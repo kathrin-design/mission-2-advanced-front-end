@@ -1,9 +1,9 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import PaymentHeader from "../components/header/PaymentHeader";
+import { PaymentHeader } from "../components/header/PaymentHeader";
 import paymentSuccessful from "../assets/payment-successful.png";
 
-const PaymentSuccessful = () => {
+export const PaymentSuccessful = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { course } = location.state || {};
@@ -40,5 +40,3 @@ const PaymentSuccessful = () => {
     </>
   );
 };
-
-export default PaymentSuccessful;

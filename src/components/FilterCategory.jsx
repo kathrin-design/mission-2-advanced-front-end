@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const FilterCategory = ({ iconClass, title, options }) => {
+export const FilterCategory = ({ iconClass, title, options }) => {
   const [isOpen, setIsOpen] = useState(true);
 
   const toggleOpen = () => setIsOpen(!isOpen);
@@ -32,5 +32,3 @@ const FilterCategory = ({ iconClass, title, options }) => {
     </div>
   );
 };
-
-export default FilterCategory;

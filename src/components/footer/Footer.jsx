@@ -1,7 +1,7 @@
 import React from "react";
-import Logo from "../../assets/Logo.png";
+import Logo from "../../assets/logo/Logo.png";
 
-const Footer = ({ classFooter }) => {
+export const Footer = ({ classFooter }) => {
   return (
     <div
       className={`w-100 pt-4 d-flex flex-column bg-white border-top align-items-end ${classFooter}`}
@@ -71,5 +71,3 @@ const Footer = ({ classFooter }) => {
     </div>
   );
 };
-
-export default Footer;

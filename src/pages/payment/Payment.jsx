@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { PaymentHeader } from "../../components/header/PaymentHeader";
+import { CourseSummary } from "../../components/course/CourseSummary";
+import { OrderSummary } from "../payment-methods/component/OrderSummary";
+import { usePaymentTime } from "../../stores/usePaymentTimeStore";
+import { useOrder } from "../../stores/useOrderStore";
+import { order } from "../../data/order";
 import "./payment.css";
-import PaymentHeader from "../../components/header/PaymentHeader";
-import CourseSummary from "../../components/course/CourseSummary";
-import OrderSummary from "../payment-methods/component/OrderSummary";
-import logoBCA from "../../assets/logo-bca.png";
-import order from "../../data/order";
-import usePaymentTime from "../../stores/usePaymentTimeStore";
-import useOrderStore from "../../stores/useOrderStore";
+import logoBCA from "../../assets/logo/logo-bca.png";
 
-const Payment = () => {
+export const Payment = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { course } = location.state || {};
@@ -18,7 +18,7 @@ const Payment = () => {
   const [copied, setCopied] = useState(false);
   const textToCopy = "11739 081234567890";
 
-  const { addOrder } = useOrderStore();
+  const { addOrder } = useOrder();
 
   useEffect(() => {
     saveTimeToLocalStorage();
@@ -131,5 +131,3 @@ const Payment = () => {
     </>
   );
 };
-
-export default Payment;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import CourseContent from "./CourseContent";
+import { CourseContent } from "./CourseContent";
 
-const CourseContentToggler = () => {
+export const CourseContentToggler = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpand = () => setIsExpanded((prevState) => !prevState);
@@ -30,5 +30,3 @@ const CourseContentToggler = () => {
     </>
   );
 };
-
-export default CourseContentToggler;

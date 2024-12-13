@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import "./order.css";
-import Header from "../../components/header/Header";
-import Sidebar from "../profile/Sidebar";
-import Footer from "../../components/footer/Footer";
-import courses from "../../data/courses";
-import usePaymentTime from "../../stores/usePaymentTimeStore";
-import formatCurrency from "../../utils/Money";
-import useOrderStore from "../../stores/useOrderStore";
+import { Header } from "../../components/header/Header";
+import { Sidebar } from "../profile/Sidebar";
+import { Footer } from "../../components/footer/Footer";
+import { courses } from "../../data/courses";
+import { usePaymentTime } from "../../stores/usePaymentTimeStore";
+import { formatCurrency } from "../../utils/Money";
+import { useOrder } from "../../stores/useOrderStore";
 
-const Order = () => {
-  const { orders } = useOrderStore();
+export const Order = () => {
+  const { orders } = useOrder();
   const { targetTime } = usePaymentTime();
   const adminFee = 7000;
 
@@ -168,5 +168,3 @@ const Order = () => {
     </>
   );
 };
-
-export default Order;

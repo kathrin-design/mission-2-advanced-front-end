@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import "./profile.css";
-import UploadAvatar from "../../components/UploadAvatar";
-import Footer from "../../components/footer/Footer";
-import useProfileStore from "../../stores/useProfileStore";
-import userProfile from "../../assets/img_profile.jpg";
-import Sidebar from "./Sidebar";
-import Header from "../../components/header/Header";
+import { UploadAvatar } from "./UploadAvatar";
+import { Footer } from "../../components/footer/Footer";
+import { Sidebar } from "./Sidebar";
+import { Header } from "../../components/header/Header";
+import { useProfile } from "../../stores/useProfileStore";
+import userProfile from "../../assets/avatar/img_profile.jpg";
 
-const Profile = () => {
-  const { user, setUser, updateUser, updateUserToApi } = useProfileStore();
+export const Profile = () => {
+  const { user, setUser, updateUser, updateUserToApi } = useProfile();
 
   useEffect(() => {
     const storedUser = localStorage.getItem("userData");
@@ -139,5 +139,3 @@ const Profile = () => {
     </>
   );
 };
-
-export default Profile;

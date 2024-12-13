@@ -1,7 +1,7 @@
 import React from "react";
-import "./hero-card.css";
+import "../home.css";
 
-const HeroCard = () => {
+export const HeroSection = () => {
   return (
     <div className="d-flex w-100 flex-column justify-content-center align-items-center">
       <div className="hero py-5 rounded-3 border-0 d-flex flex-column justify-content-center align-items-center">
@@ -29,5 +29,3 @@ const HeroCard = () => {
     </div>
   );
 };
-
-export default HeroCard;

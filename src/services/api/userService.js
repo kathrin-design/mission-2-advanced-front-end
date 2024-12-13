@@ -1,4 +1,4 @@
-import apiClient from "./apiClient";
+import { apiClient } from "./apiClient";
 
 export const getUsers = async () => {
   try {
@@ -16,16 +16,6 @@ export const createUser = async (userData) => {
     return response.data;
   } catch (error) {
     console.error("Failed to create user:", error);
-    throw error;
-  }
-};
-
-export const registerUser = async (userData) => {
-  try {
-    const response = await apiClient.post("/users", userData);
-    return response.data;
-  } catch (error) {
-    console.error("Error registering user:", error);
     throw error;
   }
 };

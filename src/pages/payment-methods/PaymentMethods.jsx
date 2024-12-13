@@ -1,11 +1,11 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import PaymentHeader from "../../components/header/PaymentHeader";
-import CourseSummary from "../../components/course/CourseSummary";
-import OrderSummary from "./component/OrderSummary";
-import MethodWrapper from "./component/MethodWrapper";
+import { PaymentHeader } from "../../components/header/PaymentHeader";
+import { CourseSummary } from "../../components/course/CourseSummary";
+import { OrderSummary } from "./component/OrderSummary";
+import { MethodWrapper } from "./component/MethodWrapper";
 
-const PaymentMethods = () => {
+export const PaymentMethods = () => {
   const location = useLocation();
   const { course } = location.state || {};
   const navigate = useNavigate();
@@ -48,5 +48,3 @@ const PaymentMethods = () => {
     </>
   );
 };
-
-export default PaymentMethods;

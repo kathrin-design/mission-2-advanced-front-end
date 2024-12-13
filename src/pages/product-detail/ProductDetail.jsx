@@ -1,16 +1,16 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import loginStore from "../../stores/useLoginStore";
+import { useLogin } from "../../stores/useLoginStore";
 import "./product-detail.css";
-import Header from "../../components/header/Header";
-import Footer from "../../components/footer/Footer";
-import CourseContentToggler from "./component/CourseContentToggler";
-import TutorSummary from "./component/TutorSummary";
-import CourseSummary from "../../components/course/CourseSummary";
+import { Header } from "../../components/header/Header";
+import { Footer } from "../../components/footer/Footer";
+import { CourseContentToggler } from "./component/CourseContentToggler";
+import { TutorSummary } from "./component/TutorSummary";
+import { CourseSummary } from "../../components/course/CourseSummary";
 
-const ProductDetail = () => {
+export const ProductDetail = () => {
   const navigate = useNavigate();
-  const { isLoggedIn } = loginStore();
+  const { isLoggedIn } = useLogin();
 
   const location = useLocation();
   const { course } = location.state || {};
@@ -146,5 +146,3 @@ const ProductDetail = () => {
     </>
   );
 };
-
-export default ProductDetail;

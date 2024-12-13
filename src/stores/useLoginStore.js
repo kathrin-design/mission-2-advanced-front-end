@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-const useLogin = create(
+export const useLogin = create(
   persist((set, get) => ({
     userName: "",
     email: "",
@@ -50,5 +50,3 @@ const useLogin = create(
     },
   }))
 );
-
-export default useLogin;

@@ -1,8 +1,8 @@
 import React from "react";
-import VideoHeader from "../../components/header/VideoHeader";
-import VideoFooter from "../../components/footer/VideoFooter";
+import { VideoHeader } from "../../components/header/VideoHeader";
+import { VideoFooter } from "../../components/footer/VideoFooter";
 
-const Video = () => {
+export const Video = () => {
   return (
     <>
       <VideoHeader />
@@ -23,5 +23,3 @@ const Video = () => {
     </>
   );
 };
-
-export default Video;

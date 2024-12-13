@@ -1,11 +1,11 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import PaymentHeader from "../components/header/PaymentHeader";
-import OrderSummary from "./payment-methods/component/OrderSummary";
-import CourseSummary from "../components/course/CourseSummary";
-import Methods from "./payment-methods/component/Methods";
+import { PaymentHeader } from "../components/header/PaymentHeader";
+import { OrderSummary } from "./payment-methods/component/OrderSummary";
+import { CourseSummary } from "../components/course/CourseSummary";
+import { MethodWrapper } from "./payment-methods/component/MethodWrapper";
 
-const ChangePaymentMethod = () => {
+export const ChangePaymentMethod = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { course } = location.state || {};
@@ -25,7 +25,7 @@ const ChangePaymentMethod = () => {
         <div className="row g-5">
           <div className="col-12 col-lg-7">
             <OrderSummary course={course} className="p-3 border rounded-3" />
-            <Methods
+            <MethodWrapper
               title="Ubah Metode Pembayaran"
               className="mt-4"
               button={
@@ -44,5 +44,3 @@ const ChangePaymentMethod = () => {
     </>
   );
 };
-
-export default ChangePaymentMethod;

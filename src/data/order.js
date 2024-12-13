@@ -1,3 +1,1 @@
-const order = [];
-
-export default order;
+export const order = [];
