@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { PaymentHeader } from "../../components/header/PaymentHeader";
 import { CourseSummary } from "../../components/course/CourseSummary";
+import { PaymentHeader } from "../../components/header/PaymentHeader";
 import { OrderSummary } from "../payment-methods/component/OrderSummary";
 import { usePaymentTime } from "../../stores/usePaymentTimeStore";
 import { useOrder } from "../../stores/useOrderStore";
