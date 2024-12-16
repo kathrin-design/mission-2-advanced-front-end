@@ -4,7 +4,6 @@ import { Header } from "../../components/header/Header";
 import { Footer } from "../../components/footer/Footer";
 import { Sidebar } from "../profile/Sidebar";
 import { ClassList } from "./ClassList";
-import { courses } from "../../data/courses";
 import { classData } from "../../data/classes";
 import "./class.css";
 
