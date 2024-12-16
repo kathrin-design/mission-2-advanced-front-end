@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { Header } from "../components/header/Header";
 import { Title } from "../components/form-component/Title";
+import { Header } from "../components/header/Header";
 import { Subtitle } from "../components/form-component/SubTitle";
 import { BtnGoogle } from "../components/form-component/BtnGoogle";
 import "../index.css";
