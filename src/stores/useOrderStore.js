@@ -1,14 +1,24 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { getOrders } from "../services/api/orderService";
 
 export const useOrder = create(
   persist(
     (set) => ({
       orders: [],
 
-      addOrder: (newOrder) =>
+      fetchOrders: async () => {
+        try {
+          const ordersData = await getOrders();
+          set({ orders: ordersData });
+        } catch (error) {
+          console.error("Failed to fetch orders:", error);
+        }
+      },
+
+      addOrderToLocalStorage: (order) =>
         set((state) => ({
-          orders: [...state.orders, newOrder],
+          orders: [...state.orders, order],
         })),
 
       removeOrder: (orderId) =>

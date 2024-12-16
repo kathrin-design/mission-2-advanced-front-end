@@ -4,18 +4,40 @@ import { PaymentHeader } from "../components/header/PaymentHeader";
 import { OrderSummary } from "./payment-methods/component/OrderSummary";
 import { CourseSummary } from "../components/course/CourseSummary";
 import { MethodWrapper } from "./payment-methods/component/MethodWrapper";
+import { useOrder } from "../stores/useOrderStore";
 
 export const ChangePaymentMethod = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { course } = location.state || {};
+  const { addOrderToLocalStorage } = useOrder();
 
   if (!course) {
     return <div>No course data available</div>;
   }
 
-  const handleToOrderPage = () => {
+  const handleToOrderPage = async () => {
     navigate("selesai", { state: { course } });
+
+    const courseId = course.id;
+    const courseName = course.name;
+    const coursePrice = course.price;
+
+    const order = {
+      courseId: courseId,
+      status: "Belum Bayar",
+      courseName: courseName,
+      coursePrice: coursePrice,
+    };
+
+    addOrderToLocalStorage(order);
+
+    try {
+      const orderResponse = await createOrder(order);
+      console.log("Order successfully created:", orderResponse);
+    } catch (error) {
+      console.error("Failed to create order:", error);
+    }
   };
 
   return (

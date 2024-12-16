@@ -51,11 +51,12 @@ export const Login = () => {
     return valid;
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
     if (validateForm()) {
-      if (login()) {
+      const success = await login();
+      if (success) {
         toast.success("Login berhasil!");
         navigate("/");
       } else {

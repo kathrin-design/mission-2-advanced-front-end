@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./order.css";
 import { Header } from "../../components/header/Header";
 import { Sidebar } from "../profile/Sidebar";
@@ -7,13 +7,18 @@ import { courses } from "../../data/courses";
 import { usePaymentTime } from "../../stores/usePaymentTimeStore";
 import { formatCurrency } from "../../utils/Money";
 import { useOrder } from "../../stores/useOrderStore";
+import dayjs from "dayjs";
 
 export const Order = () => {
-  const { orders } = useOrder();
+  const { orders, fetchOrders } = useOrder();
   const { targetTime } = usePaymentTime();
   const adminFee = 7000;
 
   const [activeTab, setActiveTab] = useState("semua");
+
+  useEffect(() => {
+    fetchOrders();
+  }, [fetchOrders]);
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -25,7 +30,7 @@ export const Order = () => {
 
   const enrichedOrders = orders.map((orderItem) => {
     const courseData = courses.find(
-      (course) => course.id === orderItem.orderId
+      (course) => course.id === orderItem.courseId
     );
     return {
       ...orderItem,
@@ -82,14 +87,14 @@ export const Order = () => {
 
               {filteredOrders.length > 0 ? (
                 filteredOrders.map((order) => (
-                  <div key={order.orderId}>
+                  <div key={order.invoice}>
                     <div
                       id="order"
                       className="border rounded-3 d-flex flex-column"
                     >
                       <div className="d-flex flex-row justify-content-between align-items-center border-bottom p-3">
                         <p className="text-secondary fs-6 fw-semibold my-auto">
-                          No. Invoice: {order.orderId}
+                          No. Invoice: {order.invoice}
                         </p>
                         <p className="text-secondary fs-6 fw-semibold my-auto">
                           Waktu Pembayaran: {paymentTime}
@@ -118,19 +123,19 @@ export const Order = () => {
                               />
                               <div className="d-flex flex-column">
                                 <p className="text-dark fs-5 fw-semibold m-0">
-                                  {order.course.name}
+                                  {order.courseName}
                                 </p>
-                                <p className="text-secondary fs-6 fw-normal m-0">
+                                <p className="order-description text-secondary fs-6 fw-normal m-0 overflow-hidden">
                                   {order.course.description}
                                 </p>
                               </div>
                             </div>
-                            <div className="d-flex border-start px-4 flex-column gap-1 justify-content-start">
+                            <div className="d-flex border-start ps-4 flex-column gap-1 justify-content-start">
                               <p className="text-secondary text-start fs-6 fw-medium m-0">
                                 Harga
                               </p>
-                              <p className="text-dark fs-5 text-start m-0 fw-semibold w-100">
-                                Rp {formatCurrency(order.course.price)}
+                              <p className="text-dark fs-5 m-0 fw-semibold w-100">
+                                Rp{formatCurrency(order.coursePrice)}
                               </p>
                             </div>
                           </div>
@@ -144,11 +149,11 @@ export const Order = () => {
                             (+biaya admin)
                           </span>
                         </p>
-                        <div className="d-flex px-4 flex-column gap-1 justify-content-start">
-                          <p className="green fw-semibold fs-5 m-0 ps-4 w-100">
+                        <div className="d-flex ps-4 flex-column gap-1 border-start">
+                          <p className="green fw-semibold fs-5 m-0 w-100">
                             Rp{" "}
                             {order.course
-                              ? formatCurrency(order.course.price + adminFee)
+                              ? formatCurrency(order.coursePrice + adminFee)
                               : "0"}
                           </p>
                         </div>
@@ -164,7 +169,7 @@ export const Order = () => {
         </div>
       </div>
 
-      <Footer />
+      <Footer classFooter="position-absolute bottom-0" />
     </>
   );
 };

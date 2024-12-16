@@ -13,9 +13,10 @@ export const FilterCategory = ({ iconClass, title, options }) => {
           {title}
         </div>
         <i
-          className={`fa-solid ${isOpen ? "fa-chevron-up" : "fa-chevron-down"}`}
+          className={`fa-solid cursor ${
+            isOpen ? "fa-chevron-up" : "fa-chevron-down"
+          }`}
           onClick={toggleOpen}
-          style={{ cursor: "pointer" }}
         ></i>
       </div>
       {isOpen &&

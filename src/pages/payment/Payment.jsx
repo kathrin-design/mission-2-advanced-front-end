@@ -5,9 +5,9 @@ import { CourseSummary } from "../../components/course/CourseSummary";
 import { OrderSummary } from "../payment-methods/component/OrderSummary";
 import { usePaymentTime } from "../../stores/usePaymentTimeStore";
 import { useOrder } from "../../stores/useOrderStore";
-import { order } from "../../data/order";
-import "./payment.css";
+import { createOrder } from "../../services/api/orderService";
 import logoBCA from "../../assets/logo/logo-bca.png";
+import "./payment.css";
 
 export const Payment = () => {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ export const Payment = () => {
   const [copied, setCopied] = useState(false);
   const textToCopy = "11739 081234567890";
 
-  const { addOrder } = useOrder();
+  const { addOrderToLocalStorage } = useOrder();
 
   useEffect(() => {
     saveTimeToLocalStorage();
@@ -32,19 +32,27 @@ export const Payment = () => {
     navigate("ubah-metode", { state: { course } });
   };
 
-  const handleToOrderPage = () => {
+  const handleToOrderPage = async () => {
     navigate("selesai", { state: { course } });
     const courseId = course.id;
+    const courseName = course.name;
+    const coursePrice = course.price;
 
-    order.push({
-      orderId: courseId,
+    const order = {
+      courseId: courseId,
       status: "Belum Bayar",
-    });
+      courseName: courseName,
+      coursePrice: coursePrice,
+    };
 
-    addOrder({
-      orderId: course.id,
-      status: "Belum Bayar",
-    });
+    addOrderToLocalStorage(order);
+
+    try {
+      const orderResponse = await createOrder(order);
+      console.log("Order successfully created:", orderResponse);
+    } catch (error) {
+      console.error("Failed to create order:", error);
+    }
   };
 
   const handleCopy = () => {

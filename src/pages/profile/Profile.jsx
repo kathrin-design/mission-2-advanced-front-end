@@ -11,11 +11,11 @@ export const Profile = () => {
   const { user, setUser, updateUser, updateUserToApi } = useProfile();
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("userData");
-    if (storedUser) {
-      const parsedUser = JSON.parse(storedUser);
-      setUser(parsedUser);
-    }
+    const loadUser = async () => {
+      await setUser();
+    };
+
+    loadUser();
   }, [setUser]);
 
   const handleInputChange = (e) => {
@@ -26,10 +26,9 @@ export const Profile = () => {
   const handleSubmit = async () => {
     try {
       const updatedUser = await updateUserToApi(user);
-
       localStorage.setItem("userData", JSON.stringify(updatedUser));
-
       alert("Profile updated successfully!");
+
     } catch (error) {
       alert("Failed to update profile. Please try again later.");
     }
@@ -135,7 +134,7 @@ export const Profile = () => {
           </div>
         </div>
       </div>
-      <Footer classFooter="position-absolute bottom-0" />
+      <Footer classFooter="position-absolute" />
     </>
   );
 };

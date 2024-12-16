@@ -38,6 +38,7 @@ export const courses = [
     },
     price: 300000,
     field: "Bisnis",
+    classStatusId: 1,
   },
   {
     id: 2,
@@ -59,6 +60,7 @@ export const courses = [
     },
     price: 500000,
     field: "Pemrograman",
+    classStatusId: 2,
   },
   {
     id: 3,
@@ -80,6 +82,7 @@ export const courses = [
     },
     price: 350000,
     field: "Bisnis",
+    classStatusId: 3,
   },
   {
     id: 4,
@@ -100,6 +103,7 @@ export const courses = [
     },
     price: 290000,
     field: "Pemrograman",
+    classStatusId: 4,
   },
   {
     id: 5,

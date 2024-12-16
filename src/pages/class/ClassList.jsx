@@ -2,7 +2,7 @@ import React from "react";
 import classCard1 from "../../assets/card/card-1.png";
 import avatar1 from "../../assets/avatar/img_avatar_3.jpg";
 
-export const ClassList = ({ modul, status, progress, button }) => {
+export const ClassList = ({ modul, status, progress, button, courseName, courseDescription, tutorName, tutorJobTitle, tutorCompany  }) => {
   return (
     <div className="border rounded-3 d-flex flex-column">
       <div className="d-flex flex-row justify-content-between align-items-center border-bottom p-3">
@@ -20,11 +20,10 @@ export const ClassList = ({ modul, status, progress, button }) => {
         />
         <div className="d-flex flex-column gap-1 w-100">
           <p className="text-dark fs-5 fw-bold m-0">
-            Big 4 Auditor Financial Analyst
+            {courseName}
           </p>
           <p className="text-secondary m-0 fw-semibold">
-            Mulai transformasi dengan instruktur profesional, harga yang
-            terjangkau, dan kurikulum terbaik
+            {courseDescription}
           </p>
           <div className="d-flex flex-wrap align-items-center mt-2 gap-3">
             <img
@@ -33,9 +32,9 @@ export const ClassList = ({ modul, status, progress, button }) => {
               className="avatar rounded-4 img-fluid"
             />
             <div className="d-flex flex-column">
-              <p className="text-dark fs-6 m-0 fw-semibold">Jenny Ortega</p>
+              <p className="text-dark fs-6 m-0 fw-semibold">{tutorName}</p>
               <p className="text-secondary fs-6 m-0 fw-medium">
-                Senior Accountant di <span className="fw-semibold">Gojek</span>
+                {tutorJobTitle} <span className="fw-semibold">{tutorCompany}</span>
               </p>
             </div>
           </div>

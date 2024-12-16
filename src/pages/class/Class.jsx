@@ -4,6 +4,8 @@ import { Header } from "../../components/header/Header";
 import { Footer } from "../../components/footer/Footer";
 import { Sidebar } from "../profile/Sidebar";
 import { ClassList } from "./ClassList";
+import { courses } from "../../data/courses";
+import { classData } from "../../data/classes";
 import "./class.css";
 
 export const Class = () => {
@@ -15,41 +17,18 @@ export const Class = () => {
     setActiveTab(tab);
   };
 
-  const ordersData = [
-    {
-      id: 1,
-      modul: "12",
-      status: "Selesai",
-      progress: 100,
-    },
-    {
-      id: 2,
-      modul: "2",
-      status: "Sedang Berjalan",
-      progress: 28,
-    },
-    {
-      id: 3,
-      modul: "2",
-      status: "Sedang Berjalan",
-      progress: 28,
-    },
-    {
-      id: 4,
-      modul: "10",
-      status: "Selesai",
-      progress: 100,
-    },
-  ];
+  const enteredClass = classData;
 
-  const filteredOrders =
+  const filteredClass =
     activeTab === "semua"
-      ? ordersData
+      ? enteredClass
       : activeTab === "sedang"
-      ? ordersData.filter(
-          (order) => order.status.toLowerCase() === "sedang berjalan"
+      ? enteredClass.filter(
+          (joinClass) => joinClass.status.toLowerCase() === "sedang berjalan"
         )
-      : ordersData.filter((order) => order.status.toLowerCase() === "selesai");
+      : enteredClass.filter(
+          (joinClass) => joinClass.status.toLowerCase() === "selesai"
+        );
 
   return (
     <>
@@ -63,8 +42,8 @@ export const Class = () => {
 
           <div className="col-12 col-lg-9">
             <div className="border rounded-2 bg-white d-flex flex-column p-3 gap-3">
-              <div className="d-flex flex-wrap gap-3 justify-content-between">
-                <div className="d-flex flex-row gap-5">
+              <div className="w-100 d-flex flex-row justify-content-between gap-5 flex-wrap">
+                <div className="d-flex flex-row gap-4">
                   <div
                     className={`d-flex flex-column gap-2 cursor-pointer ${
                       activeTab === "semua" ? "active" : ""
@@ -119,30 +98,37 @@ export const Class = () => {
                     )}
                   </div>
                 </div>
-                <div className="d-flex border rounded-3 w-25 align-items-center">
+                <div className="d-flex border rounded-2 align-items-center">
                   <input
+                    id="class"
+                    name="class"
                     type="text"
                     placeholder="Cari Kelas"
                     className="text-secondary fw-medium border-0 p-2 search-input"
                   />
-                  <i className="fa-solid fa-magnifying-glass p-2"></i>
+                  <i className="fa-solid fa-magnifying-glass pe-2 cursor"></i>
                 </div>
               </div>
 
-              {filteredOrders.length > 0 ? (
-                filteredOrders.map((order) => (
-                  <div key={order.id}>
+              {filteredClass.length > 0 ? (
+                filteredClass.map((joinClass) => (
+                  <div key={joinClass.id}>
                     <ClassList
-                      modul={order.modul}
+                      courseName={joinClass.name}
+                      courseDescription={joinClass.description}
+                      tutorName={joinClass.tutor.name}
+                      tutorJobTitle={joinClass.tutor.jobTitle}
+                      tutorCompany={joinClass.tutor.company}
+                      modul={joinClass.modul}
                       status={
                         <p
                           className={`fs-6 fw-medium p-1 px-3 rounded-3 my-auto ${
-                            order.status === "Selesai"
+                            joinClass.status === "Selesai"
                               ? "bg-order-selesai"
                               : "bg-warning-subtle text-warning"
                           }`}
                         >
-                          {order.status}
+                          {joinClass.status}
                         </p>
                       }
                       progress={
@@ -150,20 +136,20 @@ export const Class = () => {
                           className="progress w-100"
                           role="progressbar"
                           aria-label="Example with label"
-                          aria-valuenow={order.progress}
+                          aria-valuenow={joinClass.progress}
                           aria-valuemin="0"
                           aria-valuemax="100"
                         >
                           <div
                             className="progress-bar"
-                            style={{ width: `${order.progress}%` }}
+                            style={{ width: `${joinClass.progress}%` }}
                           >
-                            {order.progress}%
+                            {joinClass.progress}%
                           </div>
                         </div>
                       }
                       button={
-                        order.status === "Selesai" ? (
+                        joinClass.status === "Selesai" ? (
                           <div className="d-flex flex-column flex-sm-row gap-2 w-100 w-md-auto mt-3 mt-md-0">
                             <button className="btn-second p-2 rounded-3 fw-semibold w-100 w-sm-auto">
                               Unduh Sertifikat

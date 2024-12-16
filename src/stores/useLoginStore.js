@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { getUsers } from "../services/api/userService";
 
 export const useLogin = create(
   persist((set, get) => ({
@@ -15,9 +16,25 @@ export const useLogin = create(
       set({ isLoggedIn: status });
     },
 
-    login: () => {
+    login: async () => {
       const { userName, email, password } = get();
+
       const storedUser = localStorage.getItem("userData");
+
+      try {
+        const users = await getUsers();
+        const user = users.find(
+          (user) => user.userName === userName && user.email === email
+        );
+
+        if (user && user.password === password) {
+          localStorage.setItem("isLoggedIn", "true");
+          set({ isLoggedIn: true });
+          return true;
+        }
+      } catch (error) {
+        console.error("Error while fetching users:", error);
+      }
 
       if (storedUser) {
         const {

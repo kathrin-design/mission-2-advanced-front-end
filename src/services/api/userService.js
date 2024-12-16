@@ -22,7 +22,7 @@ export const createUser = async (userData) => {
 
 export const updateUser = async (userData) => {
   try {
-    const response = await apiClient.put(`/users/${id}`, userData);
+    const response = await apiClient.put(`/users/${userData.id}`, userData);
     return response.data;
   } catch (error) {
     console.error("Error updating user:", error);
