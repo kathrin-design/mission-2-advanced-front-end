@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "../../assets/logo/Logo.png";
 
-export const Footer = ({ classFooter }) => {
+const Footer = ({ classFooter }) => {
   return (
     <div
       className={`w-100 pt-4 d-flex flex-column bg-white border-top align-items-end ${classFooter}`}
@@ -71,3 +71,5 @@ export const Footer = ({ classFooter }) => {
     </div>
   );
 };
+
+export default Footer;

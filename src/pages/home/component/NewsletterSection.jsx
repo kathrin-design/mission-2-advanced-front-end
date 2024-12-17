@@ -1,7 +1,7 @@
 import React from "react";
 import "../home.css";
 
-export const NewsletterSection = () => {
+const NewsletterSection = () => {
   return (
     <div className="my-5 d-flex flex-column justify-content-center align-items-center">
       <div className="closing w-100 px-1 mx-2 d-flex flex-column justify-content-center align-items-center rounded-3 pb-2">
@@ -39,3 +39,5 @@ export const NewsletterSection = () => {
     </div>
   );
 };
+
+export default NewsletterSection;

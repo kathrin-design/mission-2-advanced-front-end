@@ -1,12 +1,12 @@
 import React from "react";
-import { Header } from "../../components/header/Header";
-import { HeroSection } from "../home/component/HeroSection";
-import { NewsletterSection } from "../home/component/NewsletterSection";
-import { Footer } from "../../components/footer/Footer";
+import Header from "../../components/header/Header";
+import HeroSection from "../home/component/HeroSection";
+import Courses from "../../components/course/Courses";
+import NewsletterSection from "../home/component/NewsletterSection";
+import Footer from "../../components/footer/Footer";
 import "../../index.css";
-import { Courses } from "../../components/course/Courses";
 
-export const Home = () => {
+const Home = () => {
   return (
     <>
       <Header />
@@ -19,3 +19,5 @@ export const Home = () => {
     </>
   );
 };
+
+export default Home;

@@ -13,7 +13,7 @@ import logoJCB from "../../../assets/logo/logo-jcb.jpg";
 import logoMasterCard from "../../../assets/logo/logo-mastercard.png";
 import logoVisa from "../../../assets/logo/logo-visa.png";
 
-export const MethodWrapper = ({ title, className, button }) => {
+const MethodWrapper = ({ title, className, button }) => {
   const [expandedSection, setExpandedSection] = useState(null);
 
   const toggleSection = (section) => {
@@ -152,3 +152,5 @@ export const MethodWrapper = ({ title, className, button }) => {
     </div>
   );
 };
+
+export default MethodWrapper;

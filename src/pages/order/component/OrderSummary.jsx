@@ -1,6 +1,6 @@
 import React from "react";
 
-export const OrderSummary = ({ course, button, className }) => {
+const OrderSummary = ({ course, button, className }) => {
   if (!course) {
     return <div>No course data available</div>;
   }
@@ -41,3 +41,5 @@ export const OrderSummary = ({ course, button, className }) => {
     </div>
   );
 };
+
+export default OrderSummary;

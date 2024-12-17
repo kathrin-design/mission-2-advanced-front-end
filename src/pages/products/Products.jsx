@@ -1,11 +1,11 @@
 import React from "react";
-import { Header } from "../../components/header/Header";
-import { Footer } from "../../components/footer/Footer";
-import { Courses } from "../../components/course/Courses";
-import { FilterCategory } from "../../components/FilterCategory";
+import Header from "../../components/header/Header";
+import Footer from "../../components/footer/Footer";
+import Courses from "../../components/course/Courses";
+import FilterCategory from "./component/FilterCategory";
 import "./products.css";
 
-export const Products = () => {
+const Products = () => {
   const categories = [
     {
       iconClass: "fa-book",
@@ -128,3 +128,5 @@ export const Products = () => {
     </>
   );
 };
+
+export default Products;

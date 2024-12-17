@@ -1,6 +1,6 @@
 import React from "react";
 
-export const CourseContent = () => {
+const CourseContent = () => {
   return (
     <div className="border rounded-3 p-3 d-flex flex-row justify-content-between">
       <div className="text-black fw-medium">Introduction to HR</div>
@@ -17,3 +17,5 @@ export const CourseContent = () => {
     </div>
   );
 };
+
+export default CourseContent;

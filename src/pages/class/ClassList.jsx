@@ -2,7 +2,17 @@ import React from "react";
 import classCard1 from "../../assets/card/card-1.png";
 import avatar1 from "../../assets/avatar/img_avatar_3.jpg";
 
-export const ClassList = ({ modul, status, progress, button, courseName, courseDescription, tutorName, tutorJobTitle, tutorCompany  }) => {
+const ClassList = ({
+  modul,
+  status,
+  progress,
+  button,
+  courseName,
+  courseDescription,
+  tutorName,
+  tutorJobTitle,
+  tutorCompany,
+}) => {
   return (
     <div className="border rounded-3 d-flex flex-column">
       <div className="d-flex flex-row justify-content-between align-items-center border-bottom p-3">
@@ -19,12 +29,8 @@ export const ClassList = ({ modul, status, progress, button, courseName, courseD
           className="rounded img-class img-fluid"
         />
         <div className="d-flex flex-column gap-1 w-100">
-          <p className="text-dark fs-5 fw-bold m-0">
-            {courseName}
-          </p>
-          <p className="text-secondary m-0 fw-semibold">
-            {courseDescription}
-          </p>
+          <p className="text-dark fs-5 fw-bold m-0">{courseName}</p>
+          <p className="text-secondary m-0 fw-semibold">{courseDescription}</p>
           <div className="d-flex flex-wrap align-items-center mt-2 gap-3">
             <img
               src={avatar1}
@@ -34,7 +40,8 @@ export const ClassList = ({ modul, status, progress, button, courseName, courseD
             <div className="d-flex flex-column">
               <p className="text-dark fs-6 m-0 fw-semibold">{tutorName}</p>
               <p className="text-secondary fs-6 m-0 fw-medium">
-                {tutorJobTitle} <span className="fw-semibold">{tutorCompany}</span>
+                {tutorJobTitle}{" "}
+                <span className="fw-semibold">{tutorCompany}</span>
               </p>
             </div>
           </div>
@@ -61,3 +68,5 @@ export const ClassList = ({ modul, status, progress, button, courseName, courseD
     </div>
   );
 };
+
+export default ClassList;

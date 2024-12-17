@@ -1,12 +1,12 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { PaymentHeader } from "../components/header/PaymentHeader";
-import { OrderSummary } from "./payment-methods/component/OrderSummary";
-import { CourseSummary } from "../components/course/CourseSummary";
-import { MethodWrapper } from "./payment-methods/component/MethodWrapper";
-import { useOrder } from "../stores/useOrderStore";
+import PaymentHeader from "../components/header/PaymentHeader";
+import OrderSummary from "./payment-methods/component/OrderSummary";
+import CourseSummary from "../components/course/CourseSummary";
+import MethodWrapper from "./payment-methods/component/MethodWrapper";
+import useOrder from "../store/zustand/useOrderStore";
 
-export const ChangePaymentMethod = () => {
+const ChangePaymentMethod = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { course } = location.state || {};
@@ -66,3 +66,5 @@ export const ChangePaymentMethod = () => {
     </>
   );
 };
+
+export default ChangePaymentMethod;

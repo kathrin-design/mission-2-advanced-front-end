@@ -9,3 +9,5 @@ export const getCourses = async () => {
     throw error;
   }
 };
+
+export default getCourses;

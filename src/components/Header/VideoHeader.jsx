@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./video-header.css";
-import { useLogin } from "../../stores/useLoginStore";
+import useLogin from "../../store/zustand/useLoginStore";
 
-export const VideoHeader = () => {
+const VideoHeader = () => {
   const navigate = useNavigate();
   const { userName, logout } = useLogin();
 
@@ -178,3 +178,5 @@ export const VideoHeader = () => {
     </nav>
   );
 };
+
+export default VideoHeader;

@@ -1,8 +1,8 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { getOrders } from "../services/api/orderService";
+import { getOrders } from "../../services/api/orderService";
 
-export const useOrder = create(
+const useOrder = create(
   persist(
     (set) => ({
       orders: [],
@@ -33,3 +33,5 @@ export const useOrder = create(
     }
   )
 );
+
+export default useOrder;

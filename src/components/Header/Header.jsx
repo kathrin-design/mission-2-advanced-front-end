@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import useLogin from "../../store-zustand/useLoginStore";
 import Logo from "../../assets/logo/Logo.png";
 import "./header.css";
-import { useLogin } from "../../stores/useLoginStore";
 
-export const Header = () => {
+const Header = () => {
   const navigate = useNavigate();
   const { userName, isLoggedIn, logout } = useLogin();
 
@@ -148,3 +148,5 @@ export const Header = () => {
     </nav>
   );
 };
+
+export default Header;

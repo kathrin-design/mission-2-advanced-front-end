@@ -1,14 +1,14 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useLogin } from "../../stores/useLoginStore";
+import useLogin from "../../store/zustand/useLoginStore";
 import "./product-detail.css";
-import { Header } from "../../components/header/Header";
-import { Footer } from "../../components/footer/Footer";
-import { CourseContentToggler } from "./component/CourseContentToggler";
-import { TutorSummary } from "./component/TutorSummary";
-import { CourseSummary } from "../../components/course/CourseSummary";
+import Header from "../../components/header/Header";
+import Footer from "../../components/footer/Footer";
+import CourseContentToggler from "./component/CourseContentToggler";
+import TutorSummary from "./component/TutorSummary";
+import CourseSummary from "../../components/course/CourseSummary";
 
-export const ProductDetail = () => {
+const ProductDetail = () => {
   const navigate = useNavigate();
   const { isLoggedIn } = useLogin();
 
@@ -146,3 +146,5 @@ export const ProductDetail = () => {
     </>
   );
 };
+
+export default ProductDetail;

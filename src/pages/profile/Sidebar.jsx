@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-export const Sidebar = ({ title, subtitle }) => {
+const Sidebar = ({ title, subtitle }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -51,3 +51,5 @@ export const Sidebar = ({ title, subtitle }) => {
     </div>
   );
 };
+
+export default Sidebar;

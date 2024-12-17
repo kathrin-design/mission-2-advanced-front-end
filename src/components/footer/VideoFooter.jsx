@@ -1,6 +1,6 @@
 import React from "react";
 
-export const VideoFooter = () => {
+const VideoFooter = () => {
   return (
     <div className="d-flex flex-row justify-content-between bg-green p-3 position-absolute bottom-0 w-100">
       <div className="d-flex flex-row gap-2 align-items-center cursor">
@@ -18,3 +18,5 @@ export const VideoFooter = () => {
     </div>
   );
 };
+
+export default VideoFooter;

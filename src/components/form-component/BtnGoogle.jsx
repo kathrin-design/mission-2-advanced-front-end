@@ -2,7 +2,7 @@ import React from "react";
 import "./form.css";
 import GoogleIcon from "../../assets/logo/google-icon.png";
 
-export const BtnGoogle = ({ className, keyword }) => {
+const BtnGoogle = ({ className, keyword }) => {
   return (
     <div className="d-grid mt-2">
       <button className={`btn fs-6 fw-semibold p-2 ${className}`}>
@@ -12,3 +12,5 @@ export const BtnGoogle = ({ className, keyword }) => {
     </div>
   );
 };
+
+export default BtnGoogle;

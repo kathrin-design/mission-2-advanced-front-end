@@ -4,9 +4,9 @@ import "./course.css";
 import FullStar from "../../assets/rating/full-star.png";
 import HalfStar from "../../assets/rating/half-star.png";
 import BlankStar from "../../assets/rating/blank-star.png";
-import { courses } from "../../data/courses";
+import courses from "../../data/courses";
 
-export const Courses = () => {
+const Courses = () => {
   const [activeTab, setActiveTab] = useState("semua");
 
   const handleTabClick = (tab) => {
@@ -209,3 +209,5 @@ export const Courses = () => {
     </>
   );
 };
+
+export default Courses;

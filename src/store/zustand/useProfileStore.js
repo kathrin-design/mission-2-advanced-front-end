@@ -1,9 +1,9 @@
 import { create } from "zustand";
-import { updateUser } from "../services/api/userService";
+import { updateUser } from "../../services/api/userService";
 import { persist } from "zustand/middleware";
-import { getUsers } from "../services/api/userService";
+import { getUsers } from "../../services/api/userService";
 
-export const useProfile = create(
+const useProfile = create(
   persist((set, get) => ({
     user: {
       userName: "",
@@ -16,7 +16,6 @@ export const useProfile = create(
 
     setUser: async () => {
       const { userName } = get();
-      console.log("Fetching user with userName:", userName);
       try {
         const users = await getUsers();
         const user = users.find((user) => user.userName === userName);
@@ -45,3 +44,5 @@ export const useProfile = create(
     },
   }))
 );
+
+export default useProfile;

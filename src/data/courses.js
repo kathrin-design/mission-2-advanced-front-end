@@ -17,7 +17,7 @@ import Avatar7 from "../assets/avatar/img_avatar_7.jpg";
 import Avatar8 from "../assets/avatar/img_avatar_8.jpg";
 import Avatar9 from "../assets/avatar/img_avatar_9.jpg";
 
-export const courses = [
+const courses = [
   {
     id: 1,
     invoice: 1,
@@ -211,3 +211,5 @@ export const courses = [
     field: "Pemrograman",
   },
 ];
+
+export default courses;

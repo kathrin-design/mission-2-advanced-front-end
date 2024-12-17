@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { CourseSummary } from "../../components/course/CourseSummary";
-import { PaymentHeader } from "../../components/header/PaymentHeader";
-import { OrderSummary } from "../payment-methods/component/OrderSummary";
-import { usePaymentTime } from "../../stores/usePaymentTimeStore";
-import { useOrder } from "../../stores/useOrderStore";
-import { createOrder } from "../../services/api/orderService";
+import CourseSummary from "../../components/course/CourseSummary";
+import PaymentHeader from "../../components/header/PaymentHeader";
+import OrderSummary from "../payment-methods/component/OrderSummary";
+import usePaymentTime from "../../stores/usePaymentTimeStore";
+import useOrder from "../../store/zustand/useOrderStore";
+import createOrder from "../../services/api/orderService";
 import logoBCA from "../../assets/logo/logo-bca.png";
 import "./payment.css";
 
-export const Payment = () => {
+const Payment = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { course } = location.state || {};
@@ -139,3 +139,5 @@ export const Payment = () => {
     </>
   );
 };
+
+export default Payment;

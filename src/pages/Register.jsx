@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import { useRegister } from "../stores/useRegisterStore";
-import { Header } from "../components/header/Header";
-import { Title } from "../components/form-component/Title";
-import { Subtitle } from "../components/form-component/SubTitle";
-import { BtnGoogle } from "../components/form-component/BtnGoogle";
+import useRegister from "../store/zustand/useRegisterStore";
+import Header from "../components/header/Header";
+import Title from "../components/form-component/Title";
+import Subtitle from "../components/form-component/SubTitle";
+import BtnGoogle from "../components/form-component/BtnGoogle";
 import "../index.css";
 import logoFlag from "../assets/logo/logo-flag.png";
 
-export const Register = () => {
+const Register = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
@@ -239,3 +239,5 @@ export const Register = () => {
     </>
   );
 };
+
+export default Register;

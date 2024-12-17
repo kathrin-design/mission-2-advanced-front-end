@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 
-export const CourseSummary = ({ button, className, courseImage }) => {
+const CourseSummary = ({ button, className, courseImage }) => {
   const location = useLocation();
   const { course } = location.state || {};
 
@@ -67,3 +67,5 @@ export const CourseSummary = ({ button, className, courseImage }) => {
     </div>
   );
 };
+
+export default CourseSummary;

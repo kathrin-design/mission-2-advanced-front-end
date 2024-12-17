@@ -13,7 +13,7 @@ import {
   ModalHeader,
 } from "reactstrap";
 
-export const UploadAvatar = ({
+const UploadAvatar = ({
   userId,
   token,
   username,
@@ -121,3 +121,5 @@ export const UploadAvatar = ({
     </div>
   );
 };
+
+export default UploadAvatar;

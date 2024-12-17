@@ -1,7 +1,7 @@
 import { create } from "zustand";
-import { createUser } from "../services/api/userService";
+import { createUser } from "../../services/api/userService";
 
-export const useRegister = create((set) => ({
+const useRegister = create((set) => ({
   userName: "",
   email: "",
   gender: "",
@@ -51,3 +51,5 @@ export const useRegister = create((set) => ({
     });
   },
 }));
+
+export default useRegister;

@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import "./profile.css";
-import { UploadAvatar } from "./UploadAvatar";
-import { Footer } from "../../components/footer/Footer";
-import { Sidebar } from "./Sidebar";
-import { Header } from "../../components/header/Header";
-import { useProfile } from "../../stores/useProfileStore";
+import UploadAvatar from "./UploadAvatar";
+import Footer from "../../components/footer/Footer";
+import Sidebar from "./Sidebar";
+import Header from "../../components/header/Header";
+import useProfile from "../../stores/useProfileStore";
 import userProfile from "../../assets/avatar/img_profile.jpg";
 
-export const Profile = () => {
+const Profile = () => {
   const { user, setUser, updateUser, updateUserToApi } = useProfile();
 
   useEffect(() => {
@@ -28,7 +28,6 @@ export const Profile = () => {
       const updatedUser = await updateUserToApi(user);
       localStorage.setItem("userData", JSON.stringify(updatedUser));
       alert("Profile updated successfully!");
-
     } catch (error) {
       alert("Failed to update profile. Please try again later.");
     }
@@ -134,7 +133,9 @@ export const Profile = () => {
           </div>
         </div>
       </div>
-      <Footer classFooter="position-absolute" />
+      <Footer classFooter="position-absolute bottom-0" />
     </>
   );
 };
+
+export default Profile;

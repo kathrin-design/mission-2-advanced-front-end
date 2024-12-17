@@ -3,7 +3,7 @@ import Avatar2 from "../assets/avatar/img_avatar_2.jpg";
 import Avatar5 from "../assets/avatar/img_avatar_5.jpg";
 import Avatar9 from "../assets/avatar/img_avatar_9.jpg";
 
-export const classData = [
+const classData = [
   {
     id: 1,
     name: "Big 4 Auditor Financial Analyst",
@@ -64,3 +64,5 @@ export const classData = [
     progress: 100,
   },
 ];
+
+export default classData;

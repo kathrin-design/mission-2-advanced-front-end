@@ -1,8 +1,8 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { getUsers } from "../services/api/userService";
+import {getUsers} from "../services/api/userService";
 
-export const useLogin = create(
+const useLogin = create(
   persist((set, get) => ({
     userName: "",
     email: "",
@@ -67,3 +67,5 @@ export const useLogin = create(
     },
   }))
 );
+
+export default useLogin;
