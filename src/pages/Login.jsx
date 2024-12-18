@@ -1,12 +1,13 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Title from "../components/form-component/Title";
 import Header from "../components/header/Header";
 import Subtitle from "../components/form-component/SubTitle";
 import BtnGoogle from "../components/form-component/BtnGoogle";
+import { login } from "../store/redux/user/userActions";
 import "../index.css";
-import useLogin from "../store/zustand/useLoginStore";
 
 const Login = () => {
   const [errors, setErrors] = useState({
@@ -14,19 +15,14 @@ const Login = () => {
     email: "",
     password: "",
   });
+
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   const navigate = useNavigate();
-
-  const {
-    userName,
-    email,
-    password,
-    setUserName,
-    setEmail,
-    setPassword,
-    login,
-  } = useLogin();
+  const dispatch = useDispatch();
 
   const validateForm = () => {
     let valid = true;
@@ -51,16 +47,22 @@ const Login = () => {
     return valid;
   };
 
+  const userData = {
+    userName,
+    email,
+    password,
+  };
+
   const handleLogin = async (e) => {
     e.preventDefault();
 
     if (validateForm()) {
-      const success = await login();
-      if (success) {
-        toast.success("Login berhasil!");
+      try {
+        await dispatch(login(userData)).unwrap();
+        toast.success("Login successful!");
         navigate("/");
-      } else {
-        toast.error("Email atau Password anda salah!");
+      } catch (error) {
+        toast.error(error || "Invalid username, email, or password!");
       }
     } else {
       toast.error("Mohon lengkapi semua data!");

@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import CourseSummary from "../../components/course/CourseSummary";
 import PaymentHeader from "../../components/header/PaymentHeader";
-import OrderSummary from "../payment-methods/component/OrderSummary";
-import usePaymentTime from "../../stores/usePaymentTimeStore";
+import OrderSummary from "../order/component/OrderSummary";
+import usePaymentTime from "../../store/zustand/usePaymentTimeStore";
 import useOrder from "../../store/zustand/useOrderStore";
-import createOrder from "../../services/api/orderService";
+import { createOrder } from "../../services/api/orderService";
 import logoBCA from "../../assets/logo/logo-bca.png";
 import "./payment.css";
 

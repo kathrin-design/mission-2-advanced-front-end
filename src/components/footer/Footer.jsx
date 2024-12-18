@@ -4,7 +4,7 @@ import Logo from "../../assets/logo/Logo.png";
 const Footer = ({ classFooter }) => {
   return (
     <div
-      className={`w-100 pt-4 d-flex flex-column bg-white border-top align-items-end ${classFooter}`}
+      className={`w-100 pt-4 d-flex flex-column bg-white border-top ${classFooter}`}
     >
       <div className="d-flex flex-column flex-sm-row justify-content-between w-100 px-4">
         <div className="d-flex flex-column w-50">

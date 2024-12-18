@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import {getUsers} from "../services/api/userService";
+import { getUsers } from "../../services/api/userService";
 
 const useLogin = create(
   persist((set, get) => ({

@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import PaymentHeader from "../components/header/PaymentHeader";
-import OrderSummary from "./payment-methods/component/OrderSummary";
+import OrderSummary from "../pages/order/component/OrderSummary";
 import CourseSummary from "../components/course/CourseSummary";
 import MethodWrapper from "./payment-methods/component/MethodWrapper";
 import useOrder from "../store/zustand/useOrderStore";

@@ -1,38 +1,45 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
-import useRegister from "../store/zustand/useRegisterStore";
+import { createUserData } from "../store/redux/user/userActions";
 import Header from "../components/header/Header";
 import Title from "../components/form-component/Title";
 import Subtitle from "../components/form-component/SubTitle";
 import BtnGoogle from "../components/form-component/BtnGoogle";
-import "../index.css";
 import logoFlag from "../assets/logo/logo-flag.png";
+import "../index.css";
 
 const Register = () => {
-  const [passwordVisible, setPasswordVisible] = useState(false);
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const {
-    userName,
-    email,
-    gender,
-    phoneNumber,
-    password,
-    setUserName,
-    setEmail,
-    setGender,
-    setPhoneNumber,
-    setPassword,
-    saveToLocalStorage,
-    saveToAPI,
-  } = useRegister();
+  const [formData, setFormData] = useState({
+    fullName: "",
+    userName: "",
+    email: "",
+    gender: "",
+    phoneNumber: "",
+    password: "",
+    confirmPassword: "",
+  });
 
-  const handleRegister = async (e) => {
+  const [passwordVisible, setPasswordVisible] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleRegister = (e) => {
     e.preventDefault();
 
-    if (!userName || !email || !password || !confirmPassword) {
+    const { fullName, userName, email, password, confirmPassword } = formData;
+
+    if (!fullName || !userName || !email || !password || !confirmPassword) {
       toast.error("Semua kolom harus diisi");
       return;
     }
@@ -43,9 +50,17 @@ const Register = () => {
     }
 
     try {
-      saveToLocalStorage();
-      await saveToAPI();
-      toast.success("Registrasi berhasil");
+      const userData = {
+        fullName,
+        userName,
+        email,
+        gender: formData.gender,
+        phoneNumber: formData.phoneNumber,
+        password,
+      };
+
+      dispatch(createUserData(userData));
+      toast.success("Registrasi berhasil!");
       navigate("/login");
     } catch (error) {
       toast.error("Registrasi gagal. Coba lagi nanti.");
@@ -65,7 +80,23 @@ const Register = () => {
           <Subtitle subtitle="Yuk, daftarkan akunmu sekarang juga!" />
           <form id="register" name="register" onSubmit={handleRegister}>
             <div className="mb-2">
-              <label className="text-secondary DM_Sans fs-6" htmlFor="userName">
+              <label className="text-secondary fs-6" htmlFor="fullName">
+                Nama Lengkap
+                <span className="text-danger fs-6 ms-1">*</span>
+              </label>
+              <input
+                type="text"
+                name="fullName"
+                id="fullName"
+                placeholder="Masukkan Nama Lengkap"
+                className="form-control"
+                value={formData.fullName}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="mb-2">
+              <label className="text-secondary fs-6" htmlFor="userName">
                 Username
                 <span className="text-danger fs-6 ms-1">*</span>
               </label>
@@ -73,15 +104,15 @@ const Register = () => {
                 type="text"
                 name="userName"
                 id="userName"
-                placeholder="Enter Username"
-                className="form-control DM_Sans"
-                value={userName}
-                onChange={(e) => setUserName(e.target.value)}
+                placeholder="Masukkan Username"
+                className="form-control"
+                value={formData.userName}
+                onChange={handleChange}
               />
             </div>
 
             <div className="mb-2">
-              <label htmlFor="email" className="text-secondary DM_Sans fs-6">
+              <label htmlFor="email" className="text-secondary fs-6">
                 E-mail
                 <span className="text-danger fs-6 ms-1">*</span>
               </label>
@@ -89,34 +120,37 @@ const Register = () => {
                 type="email"
                 name="email"
                 id="email"
-                placeholder="Enter Email"
-                className="DM_Sans form-control"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Masukkan Email"
+                className="form-control"
+                value={formData.email}
+                onChange={handleChange}
               />
             </div>
 
             <div>
-              <label className="text-secondary DM_Sans fs-6" htmlFor="gender">
+              <label className="text-secondary fs-6" htmlFor="gender">
                 Jenis Kelamin
                 <span className="text-danger fs-6 ms-1">*</span>
               </label>
               <select
-                className="dropdown-toggle w-100 DM_Sans d-flex flex-row justify-content-between align-items-center text-secondary btn border dropdown-toggle"
+                className="dropdown-toggle w-100 d-flex flex-row justify-content-between align-items-center text-secondary btn border dropdown-toggle"
                 name="gender"
                 id="gender"
-                value={gender}
-                onChange={(e) => setGender(e.target.value)}
+                value={formData.gender}
+                onChange={handleChange}
               >
+                <option className="text-center text-secondary fs-6">
+                  Pilih Jenis Kelamin
+                </option>
                 <option
                   value="Female"
-                  className="text-center text-secondary DM_Sans fs-6"
+                  className="text-center text-secondary fs-6"
                 >
                   Wanita
                 </option>
                 <option
                   value="Male"
-                  className="text-center text-secondary DM_Sans fs-6"
+                  className="text-center text-secondary fs-6"
                 >
                   Pria
                 </option>
@@ -124,10 +158,7 @@ const Register = () => {
             </div>
 
             <div className="mt-2">
-              <label
-                className="text-secondary DM_Sans fs-6"
-                htmlFor="phoneNumber"
-              >
+              <label className="text-secondary fs-6" htmlFor="phoneNumber">
                 No. Hp
                 <span className="text-danger fs-6 ms-1">*</span>
               </label>
@@ -145,15 +176,16 @@ const Register = () => {
                   type="text"
                   name="phoneNumber"
                   id="phoneNumber"
-                  value={phoneNumber}
-                  className="DM_Sans form-control border"
-                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  placeholder="Masukkan Nomor Telepon"
+                  className="form-control"
+                  value={formData.phoneNumber}
+                  onChange={handleChange}
                 />
               </div>
             </div>
 
             <div className="mb-3">
-              <label htmlFor="password" className="text-secondary DM_Sans fs-6">
+              <label htmlFor="password" className="text-secondary fs-6">
                 Kata Sandi
                 <span className="text-danger fs-6 ms-1">*</span>
               </label>
@@ -162,10 +194,10 @@ const Register = () => {
                   type={passwordVisible ? "text" : "password"}
                   name="password"
                   id="password"
-                  placeholder="Enter Password"
-                  className="DM_Sans border-0 fs-6 form-control"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Masukkan Kata Sandi"
+                  className="border-0 fs-6 form-control"
+                  value={formData.password}
+                  onChange={handleChange}
                 />
                 <div
                   className="passwordVisibleIcon d-flex justify-content-center align-items-center align-self-center me-2 h-50 cursor-pointer"
@@ -181,10 +213,7 @@ const Register = () => {
             </div>
 
             <div className="mb-3">
-              <label
-                htmlFor="confirmPassword"
-                className="text-secondary DM_Sans fs-6"
-              >
+              <label htmlFor="confirmPassword" className="text-secondary fs-6">
                 Konfirmasi Kata Sandi
                 <span className="text-danger fs-6 ms-1">*</span>
               </label>
@@ -193,10 +222,10 @@ const Register = () => {
                   type={passwordVisible ? "text" : "password"}
                   name="confirmPassword"
                   id="confirmPassword"
-                  placeholder="Enter Password"
-                  className="DM_Sans border-0 fs-6 form-control"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  placeholder="Masukkan Kata Sandi"
+                  className="border-0 fs-6 form-control"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
                 />
                 <div
                   className="passwordVisibleIcon d-flex justify-content-center align-items-center align-self-center me-2 h-50 cursor-pointer"

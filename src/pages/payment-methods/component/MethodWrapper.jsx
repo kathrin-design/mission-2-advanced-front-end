@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Method } from "./Method";
+import Method from "./Method";
 import "../payment-methods.css";
 import logoBCA from "../../../assets/logo/logo-bca.png";
 import logoBRI from "../../../assets/logo/logo-bri.png";

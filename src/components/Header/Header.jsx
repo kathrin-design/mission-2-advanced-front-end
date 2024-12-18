@@ -1,15 +1,23 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import useLogin from "../../store-zustand/useLoginStore";
+import { useSelector, useDispatch } from "react-redux";
+import { login, logout } from "../../store/redux/user/userActions";
 import Logo from "../../assets/logo/Logo.png";
 import "./header.css";
 
 const Header = () => {
   const navigate = useNavigate();
-  const { userName, isLoggedIn, logout } = useLogin();
+  const dispatch = useDispatch();
+
+  const { user, isLoggedIn } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      dispatch(login());
+    }
+  }, [dispatch, isLoggedIn]);
 
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
-
   const profileDropdownRef = useRef(null);
 
   const toggleProfileDropdown = () => {
@@ -17,7 +25,7 @@ const Header = () => {
   };
 
   const handleLogout = () => {
-    logout();
+    dispatch(logout());
     setIsProfileDropdownOpen(false);
     navigate("/");
   };
@@ -67,7 +75,7 @@ const Header = () => {
                 <i className="fa-solid fa-circle"></i>
               </div>
               <span className="fw-semibold fs-6">
-                {userName}
+                {user.userName}
                 <i className="fa-solid fa-angle-down ms-2"></i>
               </span>
             </div>
