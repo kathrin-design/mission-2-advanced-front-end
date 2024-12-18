@@ -17,6 +17,7 @@ import Video from "./pages/video/Video.jsx";
 import Class from "./pages/class/Class.jsx";
 import Order from "./pages/order/Order.jsx";
 import PaymentSuccessful from "./pages/PaymentSuccessful.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,8 @@ const router = createBrowserRouter([
       },
       {
         path: "profile",
-        element: <Profile />,
+        element: <ProtectedRoute />,
+        children: [{ index: true, element: <Profile /> }],
       },
       {
         path: "class",

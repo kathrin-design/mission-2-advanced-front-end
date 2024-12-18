@@ -6,6 +6,7 @@ import OrderSummary from "../order/component/OrderSummary";
 import usePaymentTime from "../../store/zustand/usePaymentTimeStore";
 import useOrder from "../../store/zustand/useOrderStore";
 import { createOrder } from "../../services/api/orderService";
+import handleCopy from "../../utils/CopyText";
 import logoBCA from "../../assets/logo/logo-bca.png";
 import "./payment.css";
 
@@ -55,20 +56,6 @@ const Payment = () => {
     }
   };
 
-  const handleCopy = () => {
-    navigator.clipboard
-      .writeText(textToCopy)
-      .then(() => {
-        setCopied(true);
-        setTimeout(() => {
-          setCopied(false);
-        }, 2000);
-      })
-      .catch((error) => {
-        console.error("Failed to copy text: ", error);
-      });
-  };
-
   return (
     <>
       <PaymentHeader />
@@ -100,7 +87,7 @@ const Payment = () => {
                   </p>
                   <p
                     className="text-danger fs-6 fw-medium m-0 cursor"
-                    onClick={handleCopy}
+                    onClick={() => handleCopy(textToCopy, setCopied)}
                   >
                     {copied ? "Tersalin!" : "Salin"}
                   </p>

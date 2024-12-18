@@ -1,6 +1,6 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import useLogin from "../../store/zustand/useLoginStore";
 import "./product-detail.css";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
@@ -10,7 +10,7 @@ import CourseSummary from "../../components/course/CourseSummary";
 
 const ProductDetail = () => {
   const navigate = useNavigate();
-  const { isLoggedIn } = useLogin();
+  const { isLoggedIn } = useSelector((state) => state.user);
 
   const location = useLocation();
   const { course } = location.state || {};
