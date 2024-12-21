@@ -5,15 +5,14 @@ import {
   updateUser,
 } from "../../../services/api/userService";
 
-// Create user
 export const createUserData = createAsyncThunk(
   "user/createUserData",
   async (userData, { rejectWithValue }) => {
     try {
       const createdUser = await createUser(userData);
-      return createdUser; // This will be passed to the slice's `fulfilled` case
+      return createdUser;
     } catch (error) {
-      return rejectWithValue(error.message); // This will be passed to the slice's `rejected` case
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -41,20 +40,18 @@ export const login = createAsyncThunk(
   }
 );
 
-// Update user data
 export const updateUserData = createAsyncThunk(
   "user/updateUserData",
   async (userData, { rejectWithValue }) => {
     try {
       const updatedUser = await updateUser(userData);
-      return updatedUser; // This will be passed to the slice's `fulfilled` case
+      return updatedUser;
     } catch (error) {
-      return rejectWithValue(error.message); // This will be passed to the slice's `rejected` case
+      return rejectWithValue(error.message);
     }
   }
 );
 
-// Logout action (doesn't need async logic)
 export const logout = () => {
   localStorage.removeItem("isLoggedIn");
   localStorage.removeItem("userData");

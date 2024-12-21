@@ -35,7 +35,6 @@ const userSlice = createSlice({
         state.error = action.payload;
       })
 
-      // Login
       .addCase(login.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -51,7 +50,6 @@ const userSlice = createSlice({
         state.error = action.payload;
       })
 
-      // Update User
       .addCase(updateUserData.pending, (state) => {
         state.loading = true;
         state.error = null;
