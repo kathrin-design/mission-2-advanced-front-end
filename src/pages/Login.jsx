@@ -6,7 +6,7 @@ import Title from "../components/form-component/Title";
 import Header from "../components/header/Header";
 import Subtitle from "../components/form-component/SubTitle";
 import BtnGoogle from "../components/form-component/BtnGoogle";
-import { login } from "../store/redux/user/userActions";
+import { getUserData } from "../store/redux/user/userActions";
 import "../index.css";
 
 const Login = () => {
@@ -58,7 +58,7 @@ const Login = () => {
 
     if (validateForm()) {
       try {
-        await dispatch(login(userData)).unwrap();
+        await dispatch(getUserData(userData)).unwrap();
         toast.success("Login successful!");
         navigate("/");
       } catch (error) {

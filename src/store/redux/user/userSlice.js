@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createUserData, login, updateUserData } from "./userActions";
+import {
+  createUserData,
+  getUserData,
+  updateUserData,
+  deleteUserData,
+} from "./userActions";
 
 const initialState = {
   user: null,
@@ -35,17 +40,17 @@ const userSlice = createSlice({
         state.error = action.payload;
       })
 
-      .addCase(login.pending, (state) => {
+      .addCase(getUserData.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(login.fulfilled, (state, action) => {
+      .addCase(getUserData.fulfilled, (state, action) => {
         console.log("Login Success - Payload:", action.payload);
         state.loading = false;
         state.isLoggedIn = true;
         state.user = action.payload;
       })
-      .addCase(login.rejected, (state, action) => {
+      .addCase(getUserData.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })
@@ -59,6 +64,19 @@ const userSlice = createSlice({
         state.user = action.payload;
       })
       .addCase(updateUserData.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+
+      .addCase(deleteUserData.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(deleteUserData.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = null;
+      })
+      .addCase(deleteUserData.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { login, logout } from "../../store/redux/user/userActions";
+import { getUserData, logout } from "../../store/redux/user/userActions";
 import Logo from "../../assets/logo/Logo.png";
 import "./header.css";
 
@@ -13,7 +13,7 @@ const Header = () => {
 
   useEffect(() => {
     if (!isLoggedIn) {
-      dispatch(login());
+      dispatch(getUserData());
     }
   }, [dispatch, isLoggedIn]);
 

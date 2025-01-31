@@ -3,6 +3,7 @@ import {
   createUser,
   getUsers,
   updateUser,
+  deleteUser
 } from "../../../services/api/userService";
 
 export const createUserData = createAsyncThunk(
@@ -17,8 +18,8 @@ export const createUserData = createAsyncThunk(
   }
 );
 
-export const login = createAsyncThunk(
-  "user/login",
+export const getUserData = createAsyncThunk(
+  "user/getUserData",
   async (userData, { rejectWithValue }) => {
     try {
       const users = await getUsers();
@@ -46,6 +47,18 @@ export const updateUserData = createAsyncThunk(
     try {
       const updatedUser = await updateUser(userData);
       return updatedUser;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteUserData = createAsyncThunk(
+  "user/deleteUserData",
+  async (userData, { rejectWithValue }) => {
+    try {
+      const deletedUser = await deleteUser(userData);
+      return deletedUser;
     } catch (error) {
       return rejectWithValue(error.message);
     }

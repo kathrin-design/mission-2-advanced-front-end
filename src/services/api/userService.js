@@ -29,3 +29,13 @@ export const updateUser = async (userData) => {
     throw error;
   }
 };
+
+export const deleteUser = async (userData) => {
+  try {
+    const response = await apiClient.delete(`/users/${userData.userId}`);
+    return response.data;
+  } catch (error) {
+    console.error("Failed to delete user:", error);
+    throw error;
+  }
+};

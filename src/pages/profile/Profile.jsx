@@ -1,6 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { updateUserData } from "../../store/redux/user/userActions";
+import {
+  updateUserData,
+  deleteUserData,
+  logout,
+} from "../../store/redux/user/userActions";
 import "./profile.css";
 import UploadAvatar from "./UploadAvatar";
 import Footer from "../../components/footer/Footer";
@@ -9,6 +14,7 @@ import Header from "../../components/header/Header";
 import userProfile from "../../assets/avatar/img_profile.jpg";
 
 const Profile = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user, loading, error } = useSelector((state) => state.user);
   console.log(user);
@@ -32,14 +38,39 @@ const Profile = () => {
     e.preventDefault();
 
     try {
-      const updatedUser = {
+      const updateUser = {
         ...user,
         ...formData,
       };
-      dispatch(updateUserData(updatedUser));
+      dispatch(updateUserData(updateUser));
       alert("Profile updated successfully!");
     } catch (error) {
       alert("Failed to update profile. Please try again later.");
+    }
+  };
+
+  const handleDelete = async () => {
+    try {
+      const deleteUser = {
+        ...user,
+        ...formData,
+      };
+
+      const resultAction = await dispatch(deleteUserData(deleteUser));
+
+      if (deleteUserData.fulfilled.match(resultAction)) {
+        alert("Profile deleted successfully!");
+
+        dispatch(logout());
+        navigate("/");
+      } else {
+        const errorMessage =
+          resultAction.payload || "Failed to delete profile.";
+        alert(errorMessage);
+      }
+    } catch (error) {
+      console.error("Error deleting profile:", error);
+      alert("An unexpected error occurred. Please try again later.");
     }
   };
 
@@ -176,6 +207,13 @@ const Profile = () => {
               </form>
             </div>
           </div>
+          <button
+            className="btn btn-danger p-2  w-25  rounded fw-semibold"
+            onClick={handleDelete}
+            disabled={loading}
+          >
+            {loading ? "Menghapus..." : "Menghapus Akun"}
+          </button>
         </div>
       </div>
       <Footer classFooter="mt-auto" />
